@@ -13,12 +13,13 @@ export class AddmedicineComponent {
  
   public user:any={ name:'',company_name:''}
 
-  public isshowcustomer=false;
+  public isshowcustomer=true;
   public isshowexpence=false;
   public inputValue: any;
   public input:any;
   public input1:any;
   public input2:any;
+  public segmentvalue : any  = "complete";
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   ngOnInit(){
     
@@ -26,10 +27,12 @@ export class AddmedicineComponent {
   Customer(){
   this.isshowcustomer=true;
   this.isshowexpence=false;
+  this.segmentvalue = "complete";
   }
   Expence(){
 this.isshowexpence=true;
 this.isshowcustomer=false;
+this.segmentvalue = "reject";
   }
   // addmedicine(){
   //   console.log(this.user)

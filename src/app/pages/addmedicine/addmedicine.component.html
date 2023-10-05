@@ -1,10 +1,16 @@
  
 <div class="container">
-
+<!-- 
     <div ngClass="form-control" class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
         <button type="button" class="btn btn-outline-primary w-100" (click)="Customer()">Customer</button>
         <button type="button" class="btn btn-outline-primary w-100" (click)="Expence()">Expence</button>
-    </div>
+    </div> --> 
+
+    <div    class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
+        <button type="button" class="btn  w-100" [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'" (click)="Customer()">Customer</button>
+        <button type="button" class="btn   w-100" [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'" (click)="Expence()">Expence</button>
+      </div>
+
     <form *ngIf="isshowcustomer">
         <div class="row" ngClass="tonpmargin"></div>
             <div style="position: absolute;margin-top:10px;right:30px;">
@@ -68,6 +74,8 @@
             </div>
     </form>
    
+
+
     <form *ngIf="isshowexpence">
         <div class="row" ngClass="tonpmargin"></div>
             <div style="position: absolute;margin-top:10px;right:30px;">
@@ -101,14 +109,19 @@
                 <table class="table table-striped mb-0">
                     <thead style=" background:orangered;color: whitesmoke; height: 50px;">
                         <tr>
-                            <th  style="width:1000px;text-align:left;"> name</th> 
-                            <th  style="width:200px;text-align:left;">  </th> 
+                            <th  style="width:100px;text-align:center;">#</th> 
+                            <th  style="width:800px;text-align:left;">Name</th> 
+                            <th  style="width:300;text-align:left;">Action</th> 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td  style="width:1000px;text-align: left;">Name</td>
-                            <td  style="width:200px;text-align: center;"><i ngClass="icon"  class="bi bi-three-dots"  data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i></td>
+                            <td  style="width:100px;text-align: center;">1</td>
+                            <td  style="width:800px;text-align: left;">Name</td>
+                            <td  style="width:300px;text-align: left;">
+                                <i style="font-size:20px;" class="bi bi-eye"  data-bs-toggle="modal" data-bs-target="#staticBackdrop2"></i>
+                                <i style="font-size:20px;margin-left:15px;" class="bi bi-calendar"data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i>
+                        </td>
                         </tr>
                     </tbody>
                 </table>
@@ -120,21 +133,23 @@
                 <div class="modal-content">
                     <div class="col-12 col-md-12  col-sm-12">
                         <div class="row" ngClass="container">
+                            <p style="font-size: 20px;color: black;padding-left:13px;">Add<b style="font-size: 20px;color: orangered;padding-left: 3px;">BILL</b><span style="font-size:20px;color: black;margin-left: 3px;"><b>Details</b></span></p>
+
                             <div class="col-md-12">
                                 <div>
-                                    <label for="name" class="label" >Customer Name</label>
+                                    <label for="name" class="label" >Date</label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Customer Name"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input">
+                                <input type="date" class="form-control" placeholder="Date"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input">
                             </div>                                           
                             <div class="col-md-12">
                                 <div>
-                                    <label for="name" class="label">Customer Number</label>
+                                    <label for="name" class="label">Amount</label>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Number" [ngModelOptions]="{standalone:true}" [(ngModel)]="input1">
+                                <input type="text" class="form-control" id="name" placeholder="Amount" [ngModelOptions]="{standalone:true}" [(ngModel)]="input1">
                             </div>
                             <div class="col-md-12">
                                 <div>
-                                    <label for="name" class="label">Customer Address</label>
+                                    <label for="name" class="label">Description</label>
                                 </div>
                                 <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input2">
                             </div>
@@ -142,7 +157,51 @@
                     </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">+ Add</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div 
+            class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" 
+            data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                   <div class="container">
+                    <p style="font-size: 20px;color: orangered;padding-left:1px;"><b>BILL</b> <span style="font-size:20px;color: black;"><b>Details</b></span></p>
+                    <div class="card" >
+                        <table class="table table-striped mb-0">
+                            <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                                <tr>
+                                    <th style="width: 200px;">#</th>
+                                    <th style="width: 400px;">Descripition</th>
+                                    <th style="width: 300px;">Date</th>
+                                    <th style="width: 300px;">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 200px;">1</td>
+                                    <td style="width: 400px;">Hi i am a student</td>
+                                    <td style="width: 300px;">20/03/2023</td>
+                                    <td style="width: 300px;">200</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px;">1</td>
+                                    <td style="width: 400px;">Hi i am a student</td>
+                                    <td style="width: 300px;">20/03/2023</td>
+                                    <td style="width: 300px;">200</td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">Submit</button> -->
                   </div>
                 </div>
               </div>

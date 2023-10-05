@@ -55,6 +55,9 @@ textarea {
 textarea:focus, input:focus {
     border-color:transparent !important
 }
+.head{
+    text-align: center;font-size: 50px;color: green;font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 input:focus::-webkit-input-placeholder {
     color:transparent

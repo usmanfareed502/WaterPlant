@@ -1,37 +1,58 @@
 <div>
-  <table class="fl-table">
+  
+  <div class="col-12 col-md-12  col-sm-12">
+    <div class="row" ngClass="container">
+        <div class="col-md-4 col-sm-12"  >
+           <div class="card" >
+            RS:10000 <br>
+            Net Balance
+           </div>
+        </div>                                           
+        <div class="col-md-4  col-sm-12">
+          <div class="card" >
+            RS:5000 <br>
+            Credit Balance
+          </div>
+        </div>
+        <div class="col-md-4  col-sm-12">
+          <div class="card" >
+            RS:1000 <br>
+            Debit Balance
+          </div>     
+        </div>
+    </div>
+</div>
+  <table class="fl-table" style="margin-top: 40px;">
     <thead>
       <tr>
-        <th>{{this.data.RefrenceNumber}}</th>
-        <th>{{this.data.date}}</th>
-        <th>{{this.data.time}}</th>
-        <th>{{this.data.day}}</th>
-        <th>{{this.data.name}}</th>
-        <th>{{this.data.name1}}</th>
-        <th>Temperature</th>
-        <th>BP</th>
-        <th>Pluse</th>
-        <th>Other</th>
-        <th>{{this.data.gender}}</th>
-        <th>{{this.data.more}}</th>
+        <th>NO</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Credit</th>
+        <th>Debit</th>
+        <th>NetBlance</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let item of getmedicineckeckup1">
-        <td>{{item.reference_number}}</td>
-        <td>{{item.date}}</td>
-        <td>{{item.time}}</td>
-        <td>{{item.day}}</td>
-        <td>{{item.name}}</td>
-        <td>{{item.father_name}}</td>
-        <th>{{item.temperature}}</th>
-        <th>{{item.bp}}</th>
-        <th>{{item.pluse}}</th>
-        <th>{{item.other}}</th>
-        <td>{{item.gender}}</td>
-        <td><i ngClass="icon" (click)="descraption(item)"  class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+      <tr>
+        <td>1</td>
+        <td>Admission</td>
+        <td>Student Admission</td>
+        <td>1000</td>
+        <td>00</td>
+        <td>23400</td>
+        <td>05/10/2023</td>
       </tr>
-
+      <tr>
+        <td>1</td>
+        <td>Admission</td>
+        <td>Student Admission</td>
+        <td>1000</td>
+        <td>00</td>
+        <td>23400</td>
+        <td>05/10/2023</td>
+      </tr>
     <tbody>
   </table>
 </div>
