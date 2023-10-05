@@ -1,0 +1,156 @@
+ 
+<div class="container">
+
+    <div ngClass="form-control" class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
+        <button type="button" class="btn btn-outline-primary w-100" (click)="Customer()">Customer</button>
+        <button type="button" class="btn btn-outline-primary w-100" (click)="Expence()">Expence</button>
+    </div>
+    <form *ngIf="isshowcustomer">
+        <div class="row" ngClass="tonpmargin"></div>
+            <div style="position: absolute;margin-top:10px;right:30px;">
+                <button class="button"
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add</button>
+            </div>
+            <div 
+            class="modal fade" id="staticBackdrop" data-bs-backdrop="static" 
+            data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="col-12 col-md-12  col-sm-12">
+                        <div class="row" ngClass="container">
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label" >Customer Name</label>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Customer Name"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input">
+                            </div>                                           
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">Customer Number</label>
+                                </div>
+                                <input type="text" class="form-control" id="name" placeholder="Number" [ngModelOptions]="{standalone:true}" [(ngModel)]="input1">
+                            </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">Customer Address</label>
+                                </div>
+                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input2">
+                            </div>
+                        </div>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">+ Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card" style="overflow-x: auto;margin-top:70px; ">
+                <table class="table table-striped mb-0">
+                    <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                        <tr>
+                            <th  style="width: 400px;text-align: center;">Customer Name</th>
+                            <th  style="width: 400px;text-align: center;">Customer Number</th>
+                            <th   style="width: 400px;text-align: center;">Customer Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td  style="width: 400px;text-align: center;"> name</td>
+                            <td  style="width: 400px;text-align: center;"> companyname</td>
+                            <td  style="width: 400px;text-align: center;">companyname</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </form>
+   
+    <form *ngIf="isshowexpence">
+        <div class="row" ngClass="tonpmargin"></div>
+            <div style="position: absolute;margin-top:10px;right:30px;">
+                <button class="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add</button>
+            </div>
+            <div 
+            class="modal fade" id="staticBackdrop" data-bs-backdrop="static" 
+            data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="col-12 col-md-12  col-sm-12">
+                        <div class="row" ngClass="container">
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label" >Name</label>
+                                </div>
+                                <input type="text" class="form-control"  placeholder="Name" [ngModelOptions]="{standalone: true}"  [(ngModel)]="inputValue">
+                            </div>
+                        </div>
+                    </div> 
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="inputdata()"  >+ Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="overflow-x: auto;margin-top:70px; ">
+                <table class="table table-striped mb-0">
+                    <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                        <tr>
+                            <th  style="width:1000px;text-align:left;"> name</th> 
+                            <th  style="width:200px;text-align:left;">  </th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td  style="width:1000px;text-align: left;">Name</td>
+                            <td  style="width:200px;text-align: center;"><i ngClass="icon"  class="bi bi-three-dots"  data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <div 
+            class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" 
+            data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="col-12 col-md-12  col-sm-12">
+                        <div class="row" ngClass="container">
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label" >Customer Name</label>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Customer Name"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input">
+                            </div>                                           
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">Customer Number</label>
+                                </div>
+                                <input type="text" class="form-control" id="name" placeholder="Number" [ngModelOptions]="{standalone:true}" [(ngModel)]="input1">
+                            </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">Customer Address</label>
+                                </div>
+                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input2">
+                            </div>
+                        </div>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">+ Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+    </form>
+ 
+  </div> 
+  
+  

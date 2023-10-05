@@ -1,0 +1,39 @@
+
+.img12{
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.item-action-buttons{
+    display: none !important;
+}
+
+.preview{
+    height: 40px;
+    width: 40px;
+    border-radius: 7px;
+  }
+ 
+
+  .modal-backdrop {
+    z-index: -1;
+    opacity: 0 !important;
+}
+
+.modal-content{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

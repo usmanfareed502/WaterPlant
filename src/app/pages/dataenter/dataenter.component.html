@@ -1,0 +1,130 @@
+<div class="container">
+    <form>
+        <div class="row" ngClass="tonpmargin1">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <label for="name" class="label">{{this.data.name}}</label>
+                        </div>
+                        <input type="text" class="form-control" id="name"  placeholder="Name" 
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name">
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label for="name" class="label">{{this.data.fn}}</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="Father Name"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.father_name"  >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <div class="col-md-5">
+                            <div>
+                                <label for="name" class="label">{{this.data.gender}}</label>
+                            </div>
+                            <select ngClass="form-control" placeholder="Search" class="form-select form-select-lg mb-3 select"
+                             style="height: 56px;" aria-label="Select  Gender" 
+                             [ngModelOptions]="{standalone: true}" [(ngModel)]="user.gender" >
+                                <option value="" disabled selected>{{this.data.sg}}</option>
+                                <option value="Male">{{this.data.m}}</option>
+                                <option value="Female">{{this.data.fem}}</option>
+                                <option value="Others">{{this.data.ot}}</option>
+                              </select>
+                    </div>
+                    <div class="col-md-7">
+                        <div>
+                            <label for="name" class="label">{{this.data.medicine}}</label>
+                        </div>
+                        <div ngClass="form-control"  >
+                            <ng-multiselect-dropdown  
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user.medicines" 
+                            [settings]="linkcolordropdownSettings"
+                            [data]="alloptionsdata"  >
+                            (onSelect)="oncolorSelect($event)"
+                            (onSelectAll)="oncolorSelectAll($event)"
+                            (onDeSelect)="oncolorDeSelect($event)"
+                            (onDeSelectAll)="oncolorUnSelectAll()">
+                          </ng-multiselect-dropdown>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <label for="name" class="label">{{this.data.dis}}</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Discraption" 
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.description" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Temperature</label>
+                        </div>
+                        <input   class="form-control" id="name" placeholder="Temperature"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.temperature">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-2 form-group">
+                            <label class="label1">BP</label>
+                            <input ngClass="form-control" class="time selector"  required placeholder="Bp"  
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user.bp">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-2 form-group">
+                            <label class="label1">Pulse</label>
+                            <input ngClass="form-control" class="time selector"   required placeholder="Pulse"  
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user.pluse"  >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-2 form-group">
+                            <label class="label1">Other</label>
+                            <input ngClass="form-control" class="time selector"  required placeholder="Other"  
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user.other" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <label for="name" class="label">{{this.data.ref}}</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="Enter  Refrence Number"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.reference_number" >
+                    </div>
+                    <div class="col-md-1">
+                        <div class="mb-2 form-group">
+                            <label class="label1">{{this.data.day}}</label>
+                            <input ngClass="form-control" class="time selector" type="day" required placeholder="days"  
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user.day">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <button class="button" (click)="adddata()">{{this.data.submit}}</button>
+      <!-- <button class="button" (click)="addmedicinecheckup()">{{this.data.submit}}</button> -->
+    </form>
+  
+  </div> 

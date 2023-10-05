@@ -1,0 +1,17 @@
+<div class="card" style="overflow-x: auto; ">
+    <table class="table table-striped mb-0">
+        <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+            <tr>
+                <th style="text-align: left;width:200px;">{{this.data.name}}</th>
+                <th style="text-align: left;width:400px;">{{this.data.companyname}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allmedicine">
+                <td style="text-align: left;width:200px;">{{item.name}}</td>
+                <td style="text-align: left;width:400px;">{{item.company_name}}</td>
+            </tr>
+    
+        </tbody>
+    </table>
+</div>

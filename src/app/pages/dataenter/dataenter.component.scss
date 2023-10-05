@@ -1,0 +1,38 @@
+.form-control{
+    margin-top: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    // border-bottom: 1px solid  #ff470d;
+    border-radius: 0px;
+    background-color: transparent;
+    margin: auto;
+    width: 100%;
+    background:none; 
+    outline:none; 
+    box-shadow:none !important; 
+    padding-left: 0px;
+  }
+  .label{
+    font-size:16px;
+  }
+  
+  .button{
+   border-radius: 10px;
+   width: 150px;
+   height: 50px;
+   margin-top: 25px;
+   color: white;
+   background-color:  #ff470d;;
+   border:  #ff470d;;
+  }
+  .button:hover{
+   background: white !important;
+   color:  #ff470d;
+  } 
+  .tonpmargin{
+  margin-top: 20px; 
+  }
+  .tonpmargin1{
+  margin-top:10px; 
+   }

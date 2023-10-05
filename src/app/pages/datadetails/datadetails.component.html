@@ -1,0 +1,65 @@
+<div>
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>{{this.data.RefrenceNumber}}</th>
+        <th>{{this.data.date}}</th>
+        <th>{{this.data.time}}</th>
+        <th>{{this.data.day}}</th>
+        <th>{{this.data.name}}</th>
+        <th>{{this.data.name1}}</th>
+        <th>Temperature</th>
+        <th>BP</th>
+        <th>Pluse</th>
+        <th>Other</th>
+        <th>{{this.data.gender}}</th>
+        <th>{{this.data.more}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of getmedicineckeckup1">
+        <td>{{item.reference_number}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.time}}</td>
+        <td>{{item.day}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.father_name}}</td>
+        <th>{{item.temperature}}</th>
+        <th>{{item.bp}}</th>
+        <th>{{item.pluse}}</th>
+        <th>{{item.other}}</th>
+        <td>{{item.gender}}</td>
+        <td><i ngClass="icon" (click)="descraption(item)"  class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+      </tr>
+
+    <tbody>
+  </table>
+</div>
+
+<div    
+
+class="modal fade" id="staticBackdrop" data-bs-backdrop="static" 
+data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="staticBackdropLabel">{{this.data.harbal}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <h5 class="modal-title" id="staticBackdropLabel">{{this.data.medicine}}</h5>
+      <div class="modal-body">
+        <p *ngFor="let medicines of getmedicineckeckup">{{medicines.medicine}}</p>
+      </div>
+      <hr >
+      <h5 class="modal-title" id="staticBackdropLabel">{{this.data.dis}}</h5>
+      <div class="modal-body"  >
+     <p> {{this.des}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.data.close}}</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{this.data.under}}</button>
+      </div>
+    </div>
+  </div>
+</div>

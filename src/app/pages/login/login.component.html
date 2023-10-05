@@ -1,0 +1,27 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-85 p-b-20">
+            <form class="login100-form validate-form">
+                <span  style="text-align: center;font-size: 50px;color:#f84337;" class="login100-form-title p-b-70">
+                Welcome
+                </span>
+                <span class="d-grid gap-2 d-md-flex justify-content-md-center" >
+                    <!-- <img src="./../../../assets/green-eco-icon.svg" alt="AVATAR" > -->
+                    <h2 style="text-align: center;font-size: 50px;color: green;">Mohammdia Harbel Mattab</h2>
+                </span>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username"  style="margin-top: 30px;">
+                    <input class="input100" type="text" placeholder="Username" name="username"  [(ngModel)]="user.username">
+                    <!-- <span class="focus-input100" data-placeholder="Username"></span> -->
+                </div>
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password"  style="margin-top: 30px;">
+                    <input class="input100" type="password" placeholder="Password" name="pass" [(ngModel)]="user.password">
+                    <!-- <span class="focus-input100" data-placeholder="Password"></span> -->
+                </div>
+                <div class="container-login100-form-btn" style="margin-top: 40px; width: 60%; max-width: 350px; margin-left: auto; margin-right: auto; display: flex;">
+                    <button class="login100-form-btn" (click)="addlogin()">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- <input type="file"  accept="image/*" class="form-control" id="inputGroupFile01" (change)="handleUpload($event)"> -->
+</div>
