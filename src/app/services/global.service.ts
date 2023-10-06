@@ -11,7 +11,61 @@ from 'rxjs';
 
     constructor() {}
    
-  
+  private loginwaterplant=new BehaviorSubject<any>('');
+  public Loginwaterplant=this.loginwaterplant.asObservable();
+  set_loginwaterplant(loginwaterplant:any){
+    this.loginwaterplant.next(loginwaterplant)
+    console.log(loginwaterplant)
+  }
+
+private addcustomer=new BehaviorSubject<any>('');
+public Addcustomer=this.addcustomer.asObservable()
+set_addcustomer(addcustomer:any){
+this.addcustomer.next(addcustomer)
+console.log(addcustomer)
+}
+
+private getcustomer=new BehaviorSubject<any>('');
+public Getcustomer=this.getcustomer.asObservable()
+set_getcustomer(getcustomer:any){
+this.getcustomer.next(getcustomer)
+console.log(getcustomer)
+}
+
+private getexpance=new BehaviorSubject<any>('');
+public Getexpance=this.getexpance.asObservable()
+set_getexpance(getexpance:any){
+this.getexpance.next(getexpance)
+console.log(getexpance)
+}
+private addexpance=new BehaviorSubject<any>('');
+public Addexpance=this.addexpance.asObservable()
+set_addexpance(addexpance:any){
+this.addexpance.next(addexpance)
+console.log(addexpance)
+}
+
+private addbilldetails=new BehaviorSubject<any>('');
+public Addbilldetails=this.addbilldetails.asObservable()
+set_addbilldetails(addbilldetails:any){
+this.addbilldetails.next(addbilldetails)
+console.log(addbilldetails)
+}
+
+
+private getbilldetails=new BehaviorSubject<any>('');
+public Getbilldetails=this.getbilldetails.asObservable()
+set_getbilldetails(getbilldetails:any){
+this.getbilldetails.next(getbilldetails)
+console.log(getbilldetails)
+}
+
+
+
+
+
+
+
     private adddatamedicine = new BehaviorSubject<any>('');
     public Adddatamedicine = this.adddatamedicine.asObservable();
 

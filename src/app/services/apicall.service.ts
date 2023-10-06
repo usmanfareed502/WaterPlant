@@ -12,6 +12,7 @@ const sorryTitle = "Sorry!";
   providedIn: 'root'
 })
 export class ApicallService {
+  addbilldetails: any;
   getordercomplete(arg0: string) {
     throw new Error('Method not implemented.');
   }
@@ -23,6 +24,88 @@ export class ApicallService {
     public authservice: AuthService, public toast : ToastService) 
    {}
  /////post/////
+ async api_loginwaterplant(data : any ){
+  await this.authservice.con(data,'loginwaterplant').then(async (res) => {
+     this.data = JSON.parse(String(res).toString());
+     console.log(this.data);
+     if(this.data.error == false)
+     {
+      this.toast.SuccessToast(this.message , this.title);
+      this.router.navigate(['./default/dashboard'])
+      this.global.set_loginwaterplant(this.data)
+     }
+     else {
+      this.message = 'Username or password missmatched'
+      this.title = 'LOGIN UNSUCCESSFUL'
+      this.toast.ErrorToast(this.message , this.title);
+     }
+
+   }, (err) => {
+     console.log(err);
+   });
+ }
+
+ async api_addcustomer(data : any ){
+  await this.authservice.con(data, 'addcustomer').then(async (res) => {
+     this.data = JSON.parse(String(res).toString());
+   
+   }, (err) => {
+     console.log(err);
+   });
+ }
+
+async api_getcustomer() {
+await this.authservice.getdata('getcustomer').then((result) => {
+    this.data = JSON.parse(String(result));
+   console.log(this.data);
+    this.global.set_getcustomer(this.data);
+  }, (err) => {
+    console.log(err);
+  });
+}
+
+
+async api_addexpance(data : any ){
+  await this.authservice.con(data, 'addexpance').then(async (res) => {
+     this.data = JSON.parse(String(res).toString());
+   
+   }, (err) => {
+     console.log(err);
+   });
+ }
+
+ async api_getexpance() {
+  await this.authservice.getdata('getexpance').then((result) => {
+      this.data = JSON.parse(String(result));
+     console.log(this.data);
+      this.global.set_getexpance(this.data);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  async api_addbilldetails(data : any ){
+    await this.authservice.con(data, 'addbilldetails').then(async (res) => {
+       this.data = JSON.parse(String(res).toString());
+     
+     }, (err) => {
+       console.log(err);
+     });
+   }
+   async api_getbilldetails() {
+    await this.authservice.getdata('getbilldetails').then((result) => {
+        this.data = JSON.parse(String(result));
+       console.log(this.data);
+        this.global.set_getbilldetails(this.data);
+      }, (err) => {
+        console.log(err);
+      });
+    }
+  
+  
+
+
+
 
 
  async api_adddatamedicine(data : any ){

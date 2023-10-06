@@ -29,25 +29,25 @@
                                 <div>
                                     <label for="name" class="label" >Customer Name</label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Customer Name"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input">
+                                <input type="text" class="form-control" placeholder="Customer Name"  [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
                             </div>                                           
                             <div class="col-md-12">
                                 <div>
                                     <label for="name" class="label">Customer Number</label>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Number" [ngModelOptions]="{standalone:true}" [(ngModel)]="input1">
+                                <input type="text" class="form-control" id="name" placeholder="Number" [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
                             </div>
                             <div class="col-md-12">
                                 <div>
                                     <label for="name" class="label">Customer Address</label>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input2">
+                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
                             </div>
                         </div>
                     </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">+ Add</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="addcustomer()">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -64,10 +64,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td  style="width: 400px;text-align: center;"> name</td>
-                            <td  style="width: 400px;text-align: center;"> companyname</td>
-                            <td  style="width: 400px;text-align: center;">companyname</td>
+                        <tr *ngFor="let item of getcusromer1">
+                            <td  style="width: 400px;text-align: center;"> {{item.name}}</td>
+                            <td  style="width: 400px;text-align: center;"> {{item.number}}</td>
+                            <td  style="width: 400px;text-align: center;">{{item.address}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -93,13 +93,13 @@
                                 <div>
                                     <label for="name" class="label" >Name</label>
                                 </div>
-                                <input type="text" class="form-control"  placeholder="Name" [ngModelOptions]="{standalone: true}"  [(ngModel)]="inputValue">
+                                <input type="text" class="form-control"  placeholder="Name" [ngModelOptions]="{standalone: true}"  [(ngModel)]="data.name">
                             </div>
                         </div>
                     </div> 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="inputdata()"  >+ Add</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addexpance()"  >+ Add</button>
                   </div>
                 </div>
               </div>
@@ -115,9 +115,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td  style="width:100px;text-align: center;">1</td>
-                            <td  style="width:800px;text-align: left;">Name</td>
+                        <tr  *ngFor="let item of getexpence">
+                            <td  style="width:100px;text-align: center;">{{item.e_id}}</td>
+                            <td  style="width:800px;text-align: left;">{{item.name}}</td>
                             <td  style="width:300px;text-align: left;">
                                 <i style="font-size:20px;" class="bi bi-eye"  data-bs-toggle="modal" data-bs-target="#staticBackdrop2"></i>
                                 <i style="font-size:20px;margin-left:15px;" class="bi bi-calendar"data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i>
@@ -139,25 +139,25 @@
                                 <div>
                                     <label for="name" class="label" >Date</label>
                                 </div>
-                                <input type="date" class="form-control" placeholder="Date"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input">
+                                <!-- <input type="date" class="form-control" placeholder="Date"  [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.date"> -->
                             </div>                                           
                             <div class="col-md-12">
                                 <div>
                                     <label for="name" class="label">Amount</label>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Amount" [ngModelOptions]="{standalone:true}" [(ngModel)]="input1">
+                                <input type="text" class="form-control" id="name" placeholder="Amount" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.amount">
                             </div>
                             <div class="col-md-12">
                                 <div>
                                     <label for="name" class="label">Description</label>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="input2">
+                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.description">
                             </div>
                         </div>
                     </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">Submit</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="addbill()">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -183,18 +183,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td style="width: 200px;">1</td>
-                                    <td style="width: 400px;">Hi i am a student</td>
-                                    <td style="width: 300px;">20/03/2023</td>
-                                    <td style="width: 300px;">200</td>
+                                <tr *ngFor="let item of getbilldetails"> 
+                                    <td style="width: 200px;">{{item.b_id}}</td>
+                                    <td style="width: 400px;">{{item.description}}</td>
+                                    <td style="width: 300px;">{{item.date}}</td>
+                                    <td style="width: 300px;">{{item.amount}}</td>
                                 </tr>
-                                <tr>
-                                    <td style="width: 200px;">1</td>
-                                    <td style="width: 400px;">Hi i am a student</td>
-                                    <td style="width: 300px;">20/03/2023</td>
-                                    <td style="width: 300px;">200</td>
-                                </tr> 
                             </tbody>
                         </table>
                     </div>

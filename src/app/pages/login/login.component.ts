@@ -9,14 +9,14 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public user : any = {username:'', password:''};
+  public user : any = {username:'', password:'',other:''};
   constructor(public apicall: ApicallService, public global : GlobalService, public router : Router) {}
 
   addlogin() {
-    this.router.navigate(['default/dashboard']);
+    // this.router.navigate(['default/dashboard']);
 
-    // console.log(this.user);
-    // this.apicall.api_getlogin(this.user);
+    console.log(this.user);
+    this.apicall.api_loginwaterplant(this.user);
   }
   
   handleUpload($event:any) {
