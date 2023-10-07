@@ -103,6 +103,31 @@ async api_addexpance(data : any ){
     }
   
   
+    async api_addexpancedetails(data : any ){
+      await this.authservice.con(data, 'addexpancedetails').then(async (res) => {
+         this.data = JSON.parse(String(res).toString());
+       
+       }, (err) => {
+         console.log(err);
+       });
+     }
+
+     async api_getexpancedetails() {
+      await this.authservice.getdata('getexpancedetails').then((result) => {
+          this.data = JSON.parse(String(result));
+         console.log(this.data);
+          this.global.set_getexpancedetails(this.data);
+        }, (err) => {
+          console.log(err);
+        });
+      }
+
+
+
+
+
+
+
 
 
 

@@ -14,34 +14,36 @@ export class DatadetailsComponent {
     name1:'Father Name',gender:'Gender',more:'More',harbal:'Harbal-Medicine',
     medicine:'Medicines',dis:'Discription',close:'Close',under:'Understood'} 
 
-  public getmedicineckeckup: any[] = [];
-  public getmedicineckeckup1: any;
-  des: any;
+  // public getmedicineckeckup: any[] = [];
+  // public getmedicineckeckup1: any;
+  // des: any;
 
   constructor( public apicall: ApicallService , public global: GlobalService) {}
-  // ngOnInit() {
+
+  ngOnInit(){
+
+  }
+       // ngOnInit() {
   //   this.apicall.api_getmedicineckeckup();
   //   this.global.Getmedicineckeckup.subscribe(res=>{
   //     this.getmedicineckeckup =res;
   //     console.log(this.getmedicineckeckup)
   //   })
   // }
-  async ngOnInit(){
-     
-    this.apicall.api_getmedicineckeckup1()
-    this.global.Getmedicineckeckup1.subscribe(res=>{
-      this.getmedicineckeckup1=res;
-      console.log(this.getmedicineckeckup1)
-    })
-  }
-  async descraption(item:any){
-    console.log(item)
-    this.des = item.description
-    await this.apicall.api_getmedicineckeckup(item.p_id)
-     this.global.Getmedicineckeckup.subscribe(res=>{
-      this.getmedicineckeckup=res;
-      console.log(this.getmedicineckeckup)
-     });
-  }
+    // this.apicall.api_getmedicineckeckup1()
+    // this.global.Getmedicineckeckup1.subscribe(res=>{
+    //   this.getmedicineckeckup1=res;
+    //   console.log(this.getmedicineckeckup1)
+    // })
+  
+  // async descraption(item:any){
+  //   console.log(item)
+  //   this.des = item.description
+  //   await this.apicall.api_getmedicineckeckup(item.p_id)
+  //    this.global.Getmedicineckeckup.subscribe(res=>{
+  //     this.getmedicineckeckup=res;
+  //     console.log(this.getmedicineckeckup)
+  //    });
+  // }
  
 }

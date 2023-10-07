@@ -1,209 +1,184 @@
- 
 <div class="container">
-<!-- 
-    <div ngClass="form-control" class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
-        <button type="button" class="btn btn-outline-primary w-100" (click)="Customer()">Customer</button>
-        <button type="button" class="btn btn-outline-primary w-100" (click)="Expence()">Expence</button>
-    </div> --> 
 
-    <div    class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
-        <button type="button" class="btn  w-100" [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'" (click)="Customer()">Customer</button>
-        <button type="button" class="btn   w-100" [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'" (click)="Expence()">Expence</button>
-      </div>
+
+    <div class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
+        <button type="button" class="btn  w-100"
+            [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="Customer()">{{this.alldata.Customer}}</button>
+        <button type="button" class="btn   w-100"
+            [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'"
+            (click)="Expence()">{{this.alldata.Expence}}</button>
+    </div>
 
     <form *ngIf="isshowcustomer">
         <div class="row" ngClass="tonpmargin"></div>
-            <div style="position: absolute;margin-top:10px;right:30px;">
-                <button class="button"
-                data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add</button>
-            </div>
-            <div 
-            class="modal fade" id="staticBackdrop" data-bs-backdrop="static" 
-            data-bs-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog" >
+        <div style="position: absolute;margin-top:10px;right:30px;">
+            <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                    class="bi bi-plus-lg"></i>{{this.alldata.Add}}</button>
+        </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="col-12 col-md-12  col-sm-12">
                         <div class="row" ngClass="container">
                             <div class="col-md-12">
                                 <div>
-                                    <label for="name" class="label" >Customer Name</label>
+                                    <label for="name" class="label">{{this.alldata.Customer_Name}}</label>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Customer Name"  [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
-                            </div>                                           
-                            <div class="col-md-12">
-                                <div>
-                                    <label for="name" class="label">Customer Number</label>
-                                </div>
-                                <input type="text" class="form-control" id="name" placeholder="Number" [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
+                                <input type="text" class="form-control" placeholder="Customer Name"
+                                    [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
                             </div>
                             <div class="col-md-12">
                                 <div>
-                                    <label for="name" class="label">Customer Address</label>
+                                    <label for="name" class="label">{{this.alldata.Customer_Number}}</label>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
+                                <input type="text" class="form-control" id="name" placeholder="Number"
+                                    [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
+                            </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">{{this.alldata.Customer_Address}}</label>
+                                </div>
+                                <input type="text" class="form-control" id="name" placeholder="Address"
+                                    [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
                             </div>
                         </div>
                     </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="addcustomer()">+ Add</button>
-                  </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.alldata.close}}</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addcustomer()">+{{this.alldata.Add}}</button>
+                    </div>
                 </div>
-              </div>
             </div>
+        </div>
 
 
-            <div class="card" style="overflow-x: auto;margin-top:70px; ">
-                <table class="table table-striped mb-0">
-                    <thead style=" background:orangered;color: whitesmoke; height: 50px;">
-                        <tr>
-                            <th  style="width: 400px;text-align: center;">Customer Name</th>
-                            <th  style="width: 400px;text-align: center;">Customer Number</th>
-                            <th   style="width: 400px;text-align: center;">Customer Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of getcusromer1">
-                            <td  style="width: 400px;text-align: center;"> {{item.name}}</td>
-                            <td  style="width: 400px;text-align: center;"> {{item.number}}</td>
-                            <td  style="width: 400px;text-align: center;">{{item.address}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="card" style="overflow-x: auto;margin-top:70px; ">
+            <table class="table table-striped mb-0">
+                <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                    <tr>
+                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Name}}</th>
+                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Number}}</th>
+                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Address}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of getcusromer1">
+                        <td style="width: 400px;text-align: center;"> {{item.name}}</td>
+                        <td style="width: 400px;text-align: center;"> {{item.number}}</td>
+                        <td style="width: 400px;text-align: center;">{{item.address}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </form>
-   
+
 
 
     <form *ngIf="isshowexpence">
         <div class="row" ngClass="tonpmargin"></div>
-            <div style="position: absolute;margin-top:10px;right:30px;">
-                <button class="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add</button>
-            </div>
-            <div 
-            class="modal fade" id="staticBackdrop" data-bs-backdrop="static" 
-            data-bs-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog" >
+        <div style="position: absolute;margin-top:10px;right:30px;">
+            <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                    class="bi bi-plus-lg"></i>{{this.alldata.Add}}</button>
+            <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">{{this.alldata.Expance}}</button>
+
+        </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="col-12 col-md-12  col-sm-12">
                         <div class="row" ngClass="container">
                             <div class="col-md-12">
                                 <div>
-                                    <label for="name" class="label" >Name</label>
+                                    <label for="name" class="label">{{this.alldata.Name}}</label>
                                 </div>
-                                <input type="text" class="form-control"  placeholder="Name" [ngModelOptions]="{standalone: true}"  [(ngModel)]="data.name">
-                            </div>
-                        </div>
-                    </div> 
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addexpance()"  >+ Add</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card" style="overflow-x: auto;margin-top:70px; ">
-                <table class="table table-striped mb-0">
-                    <thead style=" background:orangered;color: whitesmoke; height: 50px;">
-                        <tr>
-                            <th  style="width:100px;text-align:center;">#</th> 
-                            <th  style="width:800px;text-align:left;">Name</th> 
-                            <th  style="width:300;text-align:left;">Action</th> 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr  *ngFor="let item of getexpence">
-                            <td  style="width:100px;text-align: center;">{{item.e_id}}</td>
-                            <td  style="width:800px;text-align: left;">{{item.name}}</td>
-                            <td  style="width:300px;text-align: left;">
-                                <i style="font-size:20px;" class="bi bi-eye"  data-bs-toggle="modal" data-bs-target="#staticBackdrop2"></i>
-                                <i style="font-size:20px;margin-left:15px;" class="bi bi-calendar"data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i>
-                        </td>
-                        </tr>
-                    </tbody>
-                </table>
-            <div 
-            class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" 
-            data-bs-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog" >
-                <div class="modal-content">
-                    <div class="col-12 col-md-12  col-sm-12">
-                        <div class="row" ngClass="container">
-                            <p style="font-size: 20px;color: black;padding-left:13px;">Add<b style="font-size: 20px;color: orangered;padding-left: 3px;">BILL</b><span style="font-size:20px;color: black;margin-left: 3px;"><b>Details</b></span></p>
-
-                            <div class="col-md-12">
-                                <div>
-                                    <label for="name" class="label" >Date</label>
-                                </div>
-                                <!-- <input type="date" class="form-control" placeholder="Date"  [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.date"> -->
-                            </div>                                           
-                            <div class="col-md-12">
-                                <div>
-                                    <label for="name" class="label">Amount</label>
-                                </div>
-                                <input type="text" class="form-control" id="name" placeholder="Amount" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.amount">
-                            </div>
-                            <div class="col-md-12">
-                                <div>
-                                    <label for="name" class="label">Description</label>
-                                </div>
-                                <input type="text" class="form-control" id="name" placeholder="Address"  [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.description">
+                                <input type="text" class="form-control" placeholder="Name"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="data.name">
                             </div>
                         </div>
                     </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="addbill()">+ Add</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.alldata.close}}</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addexpance()">+
+                            {{this.alldata.Add}}</button>
 
-
-            <div 
-            class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" 
-            data-bs-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog" >
-                <div class="modal-content">
-                   <div class="container">
-                    <p style="font-size: 20px;color: orangered;padding-left:1px;"><b>BILL</b> <span style="font-size:20px;color: black;"><b>Details</b></span></p>
-                    <div class="card" >
-                        <table class="table table-striped mb-0">
-                            <thead style=" background:orangered;color: whitesmoke; height: 50px;">
-                                <tr>
-                                    <th style="width: 200px;">#</th>
-                                    <th style="width: 400px;">Descripition</th>
-                                    <th style="width: 300px;">Date</th>
-                                    <th style="width: 300px;">Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of getbilldetails"> 
-                                    <td style="width: 200px;">{{item.b_id}}</td>
-                                    <td style="width: 400px;">{{item.description}}</td>
-                                    <td style="width: 300px;">{{item.date}}</td>
-                                    <td style="width: 300px;">{{item.amount}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
-                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="inputdata1()">Submit</button> -->
-                  </div>
                 </div>
-              </div>
+            </div>
+        </div>
+
+        <div class="card" style="overflow-x: auto;margin-top:70px; ">
+            <table class="table table-striped mb-0">
+                <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                    <tr>
+                        <th>{{this.alldata.Name}}</th>
+                        <th>{{this.alldata.Descripition}}</th>
+                        <th>{{this.alldata.Date}}</th>
+                        <th>{{this.alldata.Amount}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of getexpancedetails">
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.date}}</td>
+                        <td>{{item.ex_amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="col-12 col-md-12  col-sm-12">
+                            <div class="row" ngClass="container">
+                                <p style="font-size: 20px;color: black;padding-left:13px;">{{this.alldata.Add}}<b
+                                        style="font-size: 20px;color: orangered;padding-left: 3px;">{{this.alldata.BILL}}</b><span
+                                        style="font-size:20px;color: black;margin-left: 3px;"><b>{{this.alldata.Details}}</b></span></p>
+
+                                <div class="col-md-12">
+                                    <select class="form-select" aria-label="Default select example"
+                                        [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.name">
+                                        <!-- <option selected>Select Expance Name</option> -->
+                                        <option value="{{item.name}}" *ngFor="let item of getexpence">
+                                            <td>{{item.name}}</td>
+                                        </option>
+                                    </select>
+                                    <div>
+                                        <label for="name" class="label">{{this.alldata.Date}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div>
+                                        <label for="name" class="label">{{this.alldata.Amount}}</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="name" placeholder="Amount"
+                                        [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.ex_amount">
+                                </div>
+                                <div class="col-md-12">
+                                    <div>
+                                        <label for="name" class="label">{{this.alldata.Descripition}}</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="name" placeholder="description"
+                                        [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.description">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.alldata.close}}</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                (click)="addexpancedetail()">+
+                                {{this.alldata.Add}}</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            </div>
+
+
+        </div>
     </form>
- 
-  </div> 
-  
-  
+
+</div>

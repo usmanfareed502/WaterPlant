@@ -52,13 +52,26 @@ this.addbilldetails.next(addbilldetails)
 console.log(addbilldetails)
 }
 
-
 private getbilldetails=new BehaviorSubject<any>('');
 public Getbilldetails=this.getbilldetails.asObservable()
 set_getbilldetails(getbilldetails:any){
 this.getbilldetails.next(getbilldetails)
 console.log(getbilldetails)
 }
+private addexpancedetails=new BehaviorSubject<any>('');
+public Addexpancedetails=this.addexpancedetails.asObservable()
+set_addexpancedetails(addexpancedetails:any){
+this.addexpancedetails.next(addexpancedetails)
+console.log(addexpancedetails)
+}
+
+private getexpancedetails=new BehaviorSubject<any>('');
+public Getexpancedetails=this.getexpancedetails.asObservable()
+set_getexpancedetails(getexpancedetails:any){
+this.getexpancedetails.next(getexpancedetails)
+console.log(getexpancedetails)
+}
+
 
 
 
