@@ -59,9 +59,10 @@ export class AddmedicineComponent {
     this.segmentvalue = "reject";
   }
   async addcustomer() {
-    this.user = { name: '', number: '', address: '' }
+  
     await this.apicall.api_addcustomer(this.user)
     console.log(this.user)
+    this.user = { name: '', number: '', address: '' }
   }
 
   async addexpance() {

@@ -1,4 +1,45 @@
 <div class="container">
+    <div style="height:80px;margin-top:-15px;">
+        <button style="position: absolute;right: 0px;" class="button" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>{{this.alldata.Addcustomer}}</button>
+    </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="col-12 col-md-12  col-sm-12">
+                    <div class="row" ngClass="container">
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label1">{{this.alldata.Customer_Name}}</label>
+                            </div>
+                            <input type="text" class="form-control1" placeholder="Customer Name"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label1">{{this.alldata.Customer_Number}}</label>
+                            </div>
+                            <input type="text" class="form-control1" id="name" placeholder="Number"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label1">{{this.alldata.Customer_Address}}</label>
+                            </div>
+                            <input type="text" class="form-control1" id="name" placeholder="Address"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.alldata.close}}</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="addcustomer()">+{{this.alldata.Addcustomer}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <form>
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
@@ -7,23 +48,43 @@
                         <div>
                             <label for="name" class="label">{{this.data.Customer_Name}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name"  placeholder="Name" 
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name">
+                        <select ngClass="form-control" placeholder="Search"
+                            class="form-select form-select-lg mb-3 select" style="height: 56px;"
+                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.name">
+                            <option value="" disabled selected>Name</option>
+                            <option value="{{item.name}}" *ngFor="let item of getcusromer1">
+                                <td>{{item.name}}</td>
+                            </option>
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.Customer_Number}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.father_name"  >
+                        <select ngClass="form-control" placeholder="Search"
+                            class="form-select form-select-lg mb-3 select" style="height: 56px;"
+                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.number">
+                            <option value="" disabled selected>Number</option>
+                            <!-- <option value="{{item.number}}" *ngFor="let item of getcusromer1">
+                                <td>{{item.number}}</td>
+                            </option> -->
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.Customer_Address}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.father_name"  >
+                        <select ngClass="form-control" placeholder="Search"
+                            class="form-select form-select-lg mb-3 select" style="height: 56px;"
+                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}"
+                            [(ngModel)]="data1.address">
+                            <option value="" disabled selected>Address</option>
+                            <!-- <option value="{{item.address}}" *ngFor="let item of getcusromer1">
+                                <td>{{item.address}}</td>
+                            </option> -->
+                        </select>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -34,22 +95,22 @@
                         <div>
                             <label for="name" class="label">{{this.data.date}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name"  placeholder="Name" 
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name">
+                        <input type="text" class="form-control" id="name" placeholder="Name"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.security}}</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name"  >
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.No_of_bottels}}</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.father_name"  >
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                 </div>
             </div>
@@ -61,22 +122,22 @@
                         <div>
                             <label for="name" class="label">{{this.data.return}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name"  placeholder="Name" 
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name">
+                        <input type="text" class="form-control" id="name" placeholder="Name"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.empty}}</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name"  >
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.amount}}</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.father_name"  >
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                 </div>
             </div>
@@ -88,22 +149,22 @@
                         <div>
                             <label for="name" class="label">{{this.data.descount}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name"  placeholder="Name" 
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name">
+                        <input type="text" class="form-control" id="name" placeholder="Name"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.total}}</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name"  >
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                     <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.sucmitted}}</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" Name"
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.father_name"  >
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                 </div>
             </div>
@@ -115,13 +176,13 @@
                         <div>
                             <label for="name" class="label">{{this.data.remeaning}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name"  placeholder="Name" 
-                        [ngModelOptions]="{standalone: true}" [(ngModel)]="user.name">
+                        <input type="text" class="form-control" id="name" placeholder="Name"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
                     </div>
                 </div>
             </div>
         </div>
-      <button class="button" (click)="adddata()">{{this.data.submit}}</button>
+        <button class="button">{{this.data.submit}}</button>
     </form>
-  
-  </div> 
+
+</div>
