@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-//const apiUrl = 'https://learn2earnn.com/green-n-eco/public/';
- const apiUrl = 'http://localhost/learn2earn/public/';
+ const apiUrl = 'http://localhost/waterplant/public/';
 
 @Injectable({
   providedIn: 'root'

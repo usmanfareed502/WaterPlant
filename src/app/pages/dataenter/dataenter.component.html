@@ -1,7 +1,7 @@
 <div class="container">
     <div style="height:80px;margin-top:-15px;">
         <button style="position: absolute;right:25px;" class="button" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>{{this.stdata.Addcustomer}}</button>
+            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add Customer</button>
     </div>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -11,21 +11,21 @@
                     <div class="row" ngClass="container">
                         <div class="col-md-12">
                             <div>
-                                <label for="name" class="label1">{{this.stdata.Customer_Name}}</label>
+                                <label for="name" class="label1">Customer Name</label>
                             </div>
                             <input type="text" class="form-control1" placeholder="Customer Name"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
                         </div>
                         <div class="col-md-12">
                             <div>
-                                <label for="name" class="label1">{{this.stdata.Customer_Number}}</label>
+                                <label for="name" class="label1">Customer NO</label>
                             </div>
                             <input type="text" class="form-control1" id="name" placeholder="Number"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
                         </div>
                         <div class="col-md-12">
                             <div>
-                                <label for="name" class="label1">{{this.stdata.Customer_Address}}</label>
+                                <label for="name" class="label1">Customer Address</label>
                             </div>
                             <input type="text" class="form-control1" id="name" placeholder="Address"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
@@ -33,9 +33,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.stdata.close}}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                        (click)="addcustomer()">+{{this.stdata.Addcustomer}}</button>
+                        (click)="addcustomer()">+ Add Customer</button>
                 </div>
             </div>
         </div>
@@ -46,13 +46,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div>
-                            <label for="name" class="label">{{this.stdata.Customer_Name}}</label>
+                            <label for="name" class="label">Select Customer</label>
                         </div>
                         <select ngClass="form-control" placeholder="Search"
                             class="form-select form-select-lg mb-3 select" style="height: 56px;"
                             aria-label="Select  Gender" (change)="selectname($event)" [ngModelOptions]="{standalone:true}" [(ngModel)]="insertbill.customer">
                             <option value="" disabled selected>Name</option>
-                            <option value="{{item.name}}" *ngFor="let item of getcusromer1">
+                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.name}}</td>
                             </option>
                         </select>
@@ -93,28 +93,28 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.date}}</label>
+                            <label for="name" class="label">Date</label>
                         </div>
                         <input type="date" class="form-control" id="name" placeholder="date"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.date">
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.security}}</label>
+                            <label for="name" class="label">Security</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" security"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.security">
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.No_of_bottels}}</label>
+                            <label for="name" class="label">No Of Bottels</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" no_of_bottels"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.No_of_bottels">
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.return}}</label>
+                            <label for="name" class="label">Return</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder="return"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.return">
@@ -128,28 +128,26 @@
                   
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.empty}}</label>
+                            <label for="name" class="label">Empty</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" empty"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.empty">
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.amount}}</label>
+                            <label for="name" class="label">Amount</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" amount"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.amount">
+                        <input type="text" class="form-control" id="name" placeholder=" amount" (change)="addamount($event)">
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.descount}}</label>
+                            <label for="name" class="label">Discount</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="descount"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.descount">
+                        <input type="text" class="form-control" id="name" placeholder="descount" (change)="adddicount($event)">
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.stdata.total}}</label>
+                            <label for="name" class="label">Total</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder=" total"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.total">
@@ -163,22 +161,21 @@
                     
                     <div class="col-md-6">
                         <div>
-                            <label for="name" class="label">{{this.stdata.sucmitted}}</label>
+                            <label for="name" class="label">Sumitted Bill</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" sucmitted"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.sucmitted">
+                        <input type="number" class="form-control" id="name" placeholder=" sucmitted" (change)="insertsubmitbill($event)">
                     </div>
                     <div class="col-md-6">
                         <div>
-                            <label for="name" class="label">{{this.stdata.remeaning}}</label>
+                            <label for="name" class="label">Remaining Bill</label>
                         </div>
                         <input type="text" class="form-control" id="name" placeholder="remeaning"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.remeaning">
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.remainingBill">
                     </div>
                 </div>
             </div>
         </div>
-        <button class="button" (click)="submit()">{{this.stdata.submit}}</button>
+        <button class="button" (click)="submit()">Submit</button>
     </form>
 
 </div>

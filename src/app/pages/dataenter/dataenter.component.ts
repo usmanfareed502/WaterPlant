@@ -9,17 +9,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DataenterComponent {
 
-  public stdata: any = {
-    Customer_Name: 'Customer Name', Customer_Number: 'Customer Number',
-    Customer_Address: 'Customer Address', close: 'close', Addcustomer: 'Add Customer',
-    date: 'Date', security: 'Security', No_of_bottels: 'No of bottels', return: 'Return', empty: 'Empty', amount: 'Amount',
-    descount: 'Descount in %', total: 'Total', sucmitted: 'Sucmitted bill', remeaning: 'Remeaning bill', submit: 'Submit'
-  }
-
   public insertbill: any = {
-    customer: '',
-    date: '', security: '', No_of_bottels: '', return: '', empty: '', amount: '',
-    descount: '', total: '', sucmitted: '', remeaning: ''
+    c_id: '',date: '', security: '', return: '', empty: '', amount: '', discount: '',
+    total: '', submittedBill: '', remainingBill: ''
   }
 
 
@@ -45,6 +37,22 @@ export class DataenterComponent {
   }
   selectname(event : any){
     console.log(event.target.value)
+  }
+  addamount(event : any){
+    this.insertbill.amount = event.target.value;
+    this.insertbill.total = this.insertbill.amount;
+  }
+  adddicount(event : any){
+ this.insertbill.discount = event.target.value;
+   const x = this.insertbill.amount * this.insertbill.discount/100;
+   this.insertbill.total = this.insertbill.amount - x;
+   this.insertbill.remainingBill = this.insertbill.total;
+
+  }
+  insertsubmitbill(event : any){
+    this.insertbill.submittedBill = event.target.value;
+    this.insertbill.remainingBill = this.insertbill.total-this.insertbill.submittedBill;
+    console.log(this.insertbill.remainingBill)
   }
   submit(){
 
