@@ -1,7 +1,7 @@
 <div class="container">
     <div style="height:80px;margin-top:-15px;">
-        <button style="position: absolute;right: 0px;" class="button" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>{{this.alldata.Addcustomer}}</button>
+        <button style="position: absolute;right:25px;" class="button" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>{{this.stdata.Addcustomer}}</button>
     </div>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -11,21 +11,21 @@
                     <div class="row" ngClass="container">
                         <div class="col-md-12">
                             <div>
-                                <label for="name" class="label1">{{this.alldata.Customer_Name}}</label>
+                                <label for="name" class="label1">{{this.stdata.Customer_Name}}</label>
                             </div>
                             <input type="text" class="form-control1" placeholder="Customer Name"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
                         </div>
                         <div class="col-md-12">
                             <div>
-                                <label for="name" class="label1">{{this.alldata.Customer_Number}}</label>
+                                <label for="name" class="label1">{{this.stdata.Customer_Number}}</label>
                             </div>
                             <input type="text" class="form-control1" id="name" placeholder="Number"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
                         </div>
                         <div class="col-md-12">
                             <div>
-                                <label for="name" class="label1">{{this.alldata.Customer_Address}}</label>
+                                <label for="name" class="label1">{{this.stdata.Customer_Address}}</label>
                             </div>
                             <input type="text" class="form-control1" id="name" placeholder="Address"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
@@ -33,9 +33,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.alldata.close}}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{this.stdata.close}}</button>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                        (click)="addcustomer()">+{{this.alldata.Addcustomer}}</button>
+                        (click)="addcustomer()">+{{this.stdata.Addcustomer}}</button>
                 </div>
             </div>
         </div>
@@ -44,20 +44,20 @@
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div>
-                            <label for="name" class="label">{{this.data.Customer_Name}}</label>
+                            <label for="name" class="label">{{this.stdata.Customer_Name}}</label>
                         </div>
                         <select ngClass="form-control" placeholder="Search"
                             class="form-select form-select-lg mb-3 select" style="height: 56px;"
-                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.name">
+                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="insertbill.customer">
                             <option value="" disabled selected>Name</option>
                             <option value="{{item.name}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.name}}</td>
                             </option>
                         </select>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.Customer_Number}}</label>
                         </div>
@@ -65,12 +65,12 @@
                             class="form-select form-select-lg mb-3 select" style="height: 56px;"
                             aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.number">
                             <option value="" disabled selected>Number</option>
-                            <!-- <option value="{{item.number}}" *ngFor="let item of getcusromer1">
+                            <option value="{{item.number}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.number}}</td>
-                            </option> -->
+                            </option>
                         </select>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <!-- <div class="col-md-4">
                         <div>
                             <label for="name" class="label">{{this.data.Customer_Address}}</label>
                         </div>
@@ -79,11 +79,11 @@
                             aria-label="Select  Gender" [ngModelOptions]="{standalone:true}"
                             [(ngModel)]="data1.address">
                             <option value="" disabled selected>Address</option>
-                            <!-- <option value="{{item.address}}" *ngFor="let item of getcusromer1">
+                            <option value="{{item.address}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.address}}</td>
-                            </option> -->
+                            </option>
                         </select>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -91,53 +91,33 @@
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.date}}</label>
+                            <label for="name" class="label">{{this.stdata.date}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder="date"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.date">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.security}}</label>
+                            <label for="name" class="label">{{this.stdata.security}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder=" security"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.security">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.No_of_bottels}}</label>
+                            <label for="name" class="label">{{this.stdata.No_of_bottels}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder=" no_of_bottels"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.No_of_bottels">
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" ngClass="tonpmargin1">
-            <div class="col-12 col-md-12  col-sm-12">
-                <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.return}}</label>
+                            <label for="name" class="label">{{this.stdata.return}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
-                    </div>
-                    <div class="col-md-4">
-                        <div>
-                            <label for="name" class="label">{{this.data.empty}}</label>
-                        </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
-                    </div>
-                    <div class="col-md-4">
-                        <div>
-                            <label for="name" class="label">{{this.data.amount}}</label>
-                        </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder="return"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.return">
                     </div>
                 </div>
             </div>
@@ -145,26 +125,34 @@
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <div class="col-md-4">
+                  
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.descount}}</label>
+                            <label for="name" class="label">{{this.stdata.empty}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder=" empty"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.empty">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.total}}</label>
+                            <label for="name" class="label">{{this.stdata.amount}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder=" amount"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.amount">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">{{this.data.sucmitted}}</label>
+                            <label for="name" class="label">{{this.stdata.descount}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder="descount"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.descount">
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">{{this.stdata.total}}</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder=" total"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.total">
                     </div>
                 </div>
             </div>
@@ -172,17 +160,26 @@
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    
+                    <div class="col-md-6">
                         <div>
-                            <label for="name" class="label">{{this.data.remeaning}}</label>
+                            <label for="name" class="label">{{this.stdata.sucmitted}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="Name"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="user">
+                        <input type="text" class="form-control" id="name" placeholder=" sucmitted"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.sucmitted">
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label for="name" class="label">{{this.stdata.remeaning}}</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="remeaning"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.remeaning">
                     </div>
                 </div>
             </div>
         </div>
-        <button class="button">{{this.data.submit}}</button>
+        <button class="button">{{this.stdata.submit}}</button>
     </form>
 
 </div>
+ 
