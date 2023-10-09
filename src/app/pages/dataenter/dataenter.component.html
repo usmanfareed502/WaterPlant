@@ -50,7 +50,7 @@
                         </div>
                         <select ngClass="form-control" placeholder="Search"
                             class="form-select form-select-lg mb-3 select" style="height: 56px;"
-                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="insertbill.customer">
+                            aria-label="Select  Gender" (change)="selectname($event)" [ngModelOptions]="{standalone:true}" [(ngModel)]="insertbill.customer">
                             <option value="" disabled selected>Name</option>
                             <option value="{{item.name}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.name}}</td>
@@ -95,7 +95,7 @@
                         <div>
                             <label for="name" class="label">{{this.stdata.date}}</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="date"
+                        <input type="date" class="form-control" id="name" placeholder="date"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.date">
                     </div>
                     <div class="col-md-3">
@@ -178,7 +178,7 @@
                 </div>
             </div>
         </div>
-        <button class="button">{{this.stdata.submit}}</button>
+        <button class="button" (click)="submit()">{{this.stdata.submit}}</button>
     </form>
 
 </div>

@@ -18,14 +18,14 @@
                     <!-- <span class="focus-input100" data-placeholder="Password"></span> -->
                 </div>
                 
-                  <div class="container-login100-form-btn" style="margin-top: 40px; width: 60%; max-width: 350px; margin-left: auto; margin-right: auto; display: flex;">
-                    <select class="form-select" aria-label="Default select example" [ngModelOptions]="{standalone: true}" [(ngModel)]="user.other">
-                        <option selected>Select Role </option>
+                  <!-- <div class="container-login100-form-btn" style="margin-top: 40px; width: 60%; max-width: 350px; margin-left: auto; margin-right: auto; display: flex;"> -->
+                    <select  class="form-select" aria-label="Default select example" [ngModelOptions]="{standalone: true}" [(ngModel)]="user.other">
+                         <option value="" disabled selected>Select Role</option>
                         <option value="admin">admin</option>
                         <option value="manager">manager</option>
                       </select>
                       
-                </div>
+                <!-- </div> -->
                 <div class="container-login100-form-btn" style="margin-top: 40px; width: 60%; max-width: 350px; margin-left: auto; margin-right: auto; display: flex;">
                     
                     <button class="login100-form-btn" (click)="addlogin()">Login</button>

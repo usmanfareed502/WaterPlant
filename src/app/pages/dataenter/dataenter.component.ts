@@ -43,6 +43,11 @@ export class DataenterComponent {
     console.log(this.user)
     this.user = { name: '', number: '', address: '' }
   }
+  selectname(event : any){
+    console.log(event.target.value)
+  }
+  submit(){
 
+  }
 
 }

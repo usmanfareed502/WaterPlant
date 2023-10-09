@@ -141,7 +141,7 @@
                                 <div class="col-md-12">
                                     <select class="form-select" aria-label="Default select example"
                                         [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.name">
-                                        <!-- <option selected>Select Expance Name</option> -->
+                                        <option value="" disabled selected>Select Expance Name</option>
                                         <option value="{{item.name}}" *ngFor="let item of getexpence">
                                             <td>{{item.name}}</td>
                                         </option>
