@@ -9,14 +9,7 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class DatadetailsComponent {
 
-  public data:any=
-  {RefrenceNumber:'Refrence Number',date:'Date',time:'Time',day:'Day',name:'Name',
-    name1:'Father Name',gender:'Gender',more:'More',harbal:'Harbal-Medicine',
-    medicine:'Medicines',dis:'Discription',close:'Close',under:'Understood'} 
-
-  // public getmedicineckeckup: any[] = [];
-  // public getmedicineckeckup1: any;
-  // des: any;
+  
 
   constructor( public apicall: ApicallService , public global: GlobalService) {}
 
