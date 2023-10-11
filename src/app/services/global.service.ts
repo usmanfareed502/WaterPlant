@@ -127,6 +127,21 @@ console.log(getexpancedetails)
         console.log(getmedicineckeckup1);
     }
 
+    private getTransaction = new BehaviorSubject<any>('');
+    public GetTransaction = this.getTransaction.asObservable();
+
+    set_getgetTransaction(getTransaction : any) {
+        this.getTransaction.next(getTransaction);
+        console.log(getTransaction);
+    }
+    private getcustomerbills = new BehaviorSubject<any>('');
+    public Getcustomerbills = this.getcustomerbills.asObservable();
+
+    set_getcustomerbills(getcustomerbills : any) {
+        this.getcustomerbills.next(getcustomerbills);
+        console.log(getcustomerbills);
+    }
+
    
 
 }

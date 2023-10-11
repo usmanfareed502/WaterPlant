@@ -125,7 +125,24 @@ async api_addexpance(data : any ){
           console.log(err);
         });
       }
-
+      async api_gettransaction() {
+        await this.authservice.getdata('gettransactions').then((result) => {
+            this.data = JSON.parse(String(result));
+           console.log(this.data);
+            this.global.set_getgetTransaction(this.data);
+          }, (err) => {
+            console.log(err);
+          });
+        }
+      async api_getallbils() {
+        await this.authservice.getdata('getallbils').then((result) => {
+            this.data = JSON.parse(String(result));
+           console.log(this.data);
+            this.global.set_getcustomerbills(this.data);
+          }, (err) => {
+            console.log(err);
+          });
+        }
 
 
 
