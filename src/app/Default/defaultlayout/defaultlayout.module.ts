@@ -54,7 +54,7 @@ const routes: Routes = [
     providers: [
       {provide: LocationStrategy, useClass: HashLocationStrategy},
     ],
-    bootstrap: [DefaultlayoutComponent]
+    bootstrap: [DefaultlayoutComponent],
   })
   export class DefaultlayoutModule { }
   
