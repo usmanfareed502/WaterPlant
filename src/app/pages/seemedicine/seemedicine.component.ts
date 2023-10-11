@@ -8,13 +8,13 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./seemedicine.component.scss']
 })
 export class SeemedicineComponent {
-  public data={name:'Medicine Name',companyname:'company Name'}
-  
-  public allmedicine: any;
-// getmedicine: any;
-
+  public allbills: any;
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   ngOnInit() {
- 
+    this.apicall.api_getallbils();
+    this.global.Getcustomerbills.subscribe( res =>{
+      this.allbills = res;
+      console.log(this.allbills);
+    })
   }
 }

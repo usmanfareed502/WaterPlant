@@ -9,34 +9,20 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class DatadetailsComponent {
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 9bfe86648527424fe58a507e6ccb6afdb8961fb8
 
   constructor( public apicall: ApicallService , public global: GlobalService) {}
-
+  public transationdetal: any;
   ngOnInit(){
-
+      this.apicall.api_gettransaction();
+      this.global.GetTransaction.subscribe( res=>{
+        this.transationdetal = res;
+        console.log(this.transationdetal)
+      })
   }
-       // ngOnInit() {
-  //   this.apicall.api_getmedicineckeckup();
-  //   this.global.Getmedicineckeckup.subscribe(res=>{
-  //     this.getmedicineckeckup =res;
-  //     console.log(this.getmedicineckeckup)
-  //   })
-  // }
-    // this.apicall.api_getmedicineckeckup1()
-    // this.global.Getmedicineckeckup1.subscribe(res=>{
-    //   this.getmedicineckeckup1=res;
-    //   console.log(this.getmedicineckeckup1)
-    // })
-  
-  // async descraption(item:any){
-  //   console.log(item)
-  //   this.des = item.description
-  //   await this.apicall.api_getmedicineckeckup(item.p_id)
-  //    this.global.Getmedicineckeckup.subscribe(res=>{
-  //     this.getmedicineckeckup=res;
-  //     console.log(this.getmedicineckeckup)
-  //    });
-  // }
+
  
 }
