@@ -10,8 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class DataenterComponent {
 
   public insertbill: any = {
-    c_id: '',date: '', security: '', return: '', empty: '', amount: '', discount: '',
-    total: '', submittedBill: '', remainingBill: ''
+    c_id: '',date: '', security: '', no_of_boottels:'', return: '', empty: '', amount: '', discount: '',
+    total: '', submittedBill: 0, remainingBill: '',paymentstatus:''
   }
 
 
@@ -56,11 +56,17 @@ export class DataenterComponent {
     console.log(this.insertbill.remainingBill)
   }
   submit(){
+    if( this.insertbill.remainingBill == 0){
+      this.insertbill.paymentstatus = 'confirm'
+    }
+    else{
+      this.insertbill.paymentstatus = 'pending'
+    }
     console.log(this.insertbill)
     this.apicall.api_addbilldetails(this.insertbill)
     this.insertbill= {
-      c_id: '',date: '', security: '', return: '', empty: '', amount: '', discount: '',
-      total: '', submittedBill: '', remainingBill: ''
+      c_id: '',date: '', security: '', no_of_boottels:'', return: '', empty: '', amount: '', discount: '',
+      total: '', submittedBill: '', remainingBill: '',paymentstatus:''
     }
   }
 
