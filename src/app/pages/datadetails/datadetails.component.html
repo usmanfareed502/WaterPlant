@@ -1,4 +1,8 @@
 <div   ngClass="container">
+  <div style="height:80px;margin-top:-15px;">
+    <button style="position: absolute;right:25px;" class="button" 
+    type="button" class="btn btn-primary"  >Refresh</button>
+</div>
   <div class="col-12 col-md-12  col-sm-12">
     <div class="row">
         <div class="col-md-4 col-sm-12"  >
@@ -38,11 +42,11 @@
           <option value="bill">Bills</option>
       </select>
     </div>
-    <div class="col-md-6">
-     <input type="month" (change)="get_installmentbymoont($event)">
+    <div class="col-md-5">
+     <input type="month"  class="form-control"  (change)="get_installmentbymoont($event)">
   </div>
   <div class="col-md-2">
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filtertransactions()">Filter</button>
+    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="filtertransactions()">Filter</button>
 
 </div>
     </div>
