@@ -1,4 +1,4 @@
-<div  class="container">
+<div   ngClass="container">
   <div class="col-12 col-md-12  col-sm-12">
     <div class="row">
         <div class="col-md-4 col-sm-12"  >
@@ -40,8 +40,8 @@
 
 
   <div class="col-12 col-md-12  col-sm-12">
-    <div class="row" style="margin-top: 20px;" ngClass="container">
-      <div class="col-md-6">
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-5">
         <select class="form-select" aria-label="Default select example" (change)="expensename($event)">
           <option value="" disabled selected>Select Expance Name</option>
           <option value="Expense">Expense</option>
@@ -51,6 +51,10 @@
     <div class="col-md-6">
      <input type="month">
   </div>
+  <div class="col-md-2">
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Filter</button>
+
+</div>
     </div>
 </div>
 
