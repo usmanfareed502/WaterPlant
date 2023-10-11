@@ -44,16 +44,12 @@
       <div class="col-md-6">
         <select class="form-select" aria-label="Default select example" (change)="expensename($event)">
           <option value="" disabled selected>Select Expance Name</option>
-          <option value="{{item.e_id}}" *ngFor="let item of getexpence">
-              <td>{{item.name}}</td>
-          </option>
+          <option value="Expense">Expense</option>
+          <option value="bill">Bills</option>
       </select>
     </div>
     <div class="col-md-6">
-      <select class="form-select" aria-label="Default select example"  >
-          <option value="" disabled selected>Select Expance Name</option>
-          <option value="" >  <!-- <td>{{item.name}}</td> --></option>
-      </select>
+     <input type="month">
   </div>
     </div>
 </div>
