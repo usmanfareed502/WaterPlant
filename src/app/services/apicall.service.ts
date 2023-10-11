@@ -87,6 +87,10 @@ async api_addexpance(data : any ){
   async api_addbilldetails(data : any ){
     await this.authservice.con(data, 'addbilldetails').then(async (res) => {
        this.data = JSON.parse(String(res).toString());
+       console.log(this.data)
+       this.message = ''
+       this.title = 'Bill Submit Sucessfully'
+       this.toast.SuccessToast(this.message , this.title);
      
      }, (err) => {
        console.log(err);
@@ -106,7 +110,7 @@ async api_addexpance(data : any ){
     async api_addexpancedetails(data : any ){
       await this.authservice.con(data, 'addexpancedetails').then(async (res) => {
          this.data = JSON.parse(String(res).toString());
-       
+       console.log(this.data)
        }, (err) => {
          console.log(err);
        });

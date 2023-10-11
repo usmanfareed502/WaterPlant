@@ -18,7 +18,7 @@ export class AddmedicineComponent {
 
   public user: any = { name: '', number: '', address: '' }
   public data: any = { name: '' }
-  public data1: any = { name: '', ex_amount: '', description: '', date: '' }
+  public data1: any = { e_id: '', ex_amount: '', description: '', date: '' }
 
   public isshowcustomer = true;
   public isshowexpence = false;
@@ -70,12 +70,16 @@ export class AddmedicineComponent {
     console.log(this.data)
     this.data = { name: '' }
   }
+  expensename(event: any){
+    this.data1.e_id = event.target.value;
+  }
 
   addexpancedetail() {
 
     this.apicall.api_addexpancedetails(this.data1);
     console.log(this.data1)
-    this.data1 = { name: '', ex_amount: '', description: '', date: '' }
+    this.data1 = { e_id: '', ex_amount: '', description: '', date: '' }
+    this.apicall.api_getexpancedetails();
   }
 
 }

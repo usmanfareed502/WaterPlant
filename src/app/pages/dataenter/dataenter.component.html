@@ -50,7 +50,7 @@
                         </div>
                         <select ngClass="form-control" placeholder="Search"
                             class="form-select form-select-lg mb-3 select" style="height: 56px;"
-                            aria-label="Select  Gender" (change)="selectname($event)" [ngModelOptions]="{standalone:true}" [(ngModel)]="insertbill.customer">
+                            aria-label="Select  Gender" (change)="selectname($event)">
                             <option value="" disabled selected>Name</option>
                             <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.name}}</td>
@@ -102,21 +102,21 @@
                         <div>
                             <label for="name" class="label">Security</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" security"
+                        <input type="number" class="form-control" id="name" placeholder=" security"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.security">
                     </div>
                     <div class="col-md-3">
                         <div>
                             <label for="name" class="label">No Of Bottels</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" no_of_bottels"
+                        <input type="number" class="form-control" id="name" placeholder=" no_of_bottels"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.No_of_bottels">
                     </div>
                     <div class="col-md-3">
                         <div>
                             <label for="name" class="label">Return</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="return"
+                        <input type="number" class="form-control" id="name" placeholder="return"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.return">
                     </div>
                 </div>
@@ -130,26 +130,26 @@
                         <div>
                             <label for="name" class="label">Empty</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" empty"
+                        <input type="number" class="form-control" id="name" placeholder=" empty"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.empty">
                     </div>
                     <div class="col-md-3">
                         <div>
                             <label for="name" class="label">Amount</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" amount" (change)="addamount($event)">
+                        <input type="number" class="form-control" id="name" placeholder=" amount" (change)="addamount($event)">
                     </div>
                     <div class="col-md-3">
                         <div>
                             <label for="name" class="label">Discount</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="descount" (change)="adddicount($event)">
+                        <input type="number" class="form-control" id="name" placeholder="descount" (change)="adddicount($event)">
                     </div>
                     <div class="col-md-3">
                         <div>
                             <label for="name" class="label">Total</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder=" total"
+                        <input type="number" class="form-control" id="name" placeholder=" total"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.total">
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                         <div>
                             <label for="name" class="label">Remaining Bill</label>
                         </div>
-                        <input type="text" class="form-control" id="name" placeholder="remeaning"
+                        <input type="number" class="form-control" id="name" placeholder="remeaning"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.remainingBill">
                     </div>
                 </div>

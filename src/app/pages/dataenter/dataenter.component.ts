@@ -37,6 +37,7 @@ export class DataenterComponent {
   }
   selectname(event : any){
     console.log(event.target.value)
+    this.insertbill.c_id = event.target.value;
   }
   addamount(event : any){
     this.insertbill.amount = event.target.value;
@@ -55,7 +56,12 @@ export class DataenterComponent {
     console.log(this.insertbill.remainingBill)
   }
   submit(){
-
+    console.log(this.insertbill)
+    this.apicall.api_addbilldetails(this.insertbill)
+    this.insertbill= {
+      c_id: '',date: '', security: '', return: '', empty: '', amount: '', discount: '',
+      total: '', submittedBill: '', remainingBill: ''
+    }
   }
 
 }
