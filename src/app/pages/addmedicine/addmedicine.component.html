@@ -113,10 +113,10 @@
             <table class="table table-striped mb-0">
                 <thead style=" background:orangered;color: whitesmoke; height: 50px;">
                     <tr>
-                        <th>{{this.alldata.Name}}</th>
-                        <th>{{this.alldata.Descripition}}</th>
-                        <th>{{this.alldata.Date}}</th>
-                        <th>{{this.alldata.Amount}}</th>
+                        <th>Name</th>
+                        <th>Descripition</th>
+                        <th>Date</th>
+                        <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -139,10 +139,9 @@
                                         style="font-size:20px;color: black;margin-left: 3px;"><b>{{this.alldata.Details}}</b></span></p>
 
                                 <div class="col-md-12">
-                                    <select class="form-select" aria-label="Default select example"
-                                        [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.name">
+                                    <select class="form-select" aria-label="Default select example" (change)="expensename($event)">
                                         <option value="" disabled selected>Select Expance Name</option>
-                                        <option value="{{item.name}}" *ngFor="let item of getexpence">
+                                        <option value="{{item.e_id}}" *ngFor="let item of getexpence">
                                             <td>{{item.name}}</td>
                                         </option>
                                     </select>
