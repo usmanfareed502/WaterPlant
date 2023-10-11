@@ -143,6 +143,25 @@ async api_addexpance(data : any ){
             console.log(err);
           });
         }
+        async api_gettransactionsbyfilter(data : any ){
+          await this.authservice.con(data, 'gettransactionsbyfilter').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+           console.log(this.data)
+           this.global.set_getgetTransaction(this.data);
+           }, (err) => {
+             console.log(err);
+           });
+         }
+         async api_getallbilsbyfilter(data : any ){
+          await this.authservice.con(data, 'getallbilsbyfilter').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+           console.log(this.data)
+           this.global.set_getcustomerbills(this.data);
+           }, (err) => {
+             console.log(err);
+           });
+         }
+    
 
 
 

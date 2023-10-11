@@ -1,7 +1,7 @@
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule, HashLocationStrategy , LocationStrategy } from '@angular/common';
+import { CommonModule, DatePipe, HashLocationStrategy , LocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { DefaultlayoutComponent } from './Default/defaultlayout/defaultlayout.component';
@@ -58,7 +58,7 @@ import { SeemedicineComponent } from './pages/seemedicine/seemedicine.component'
     NgApexchartsModule,
     CommonModule
   ],
-  providers: [{provide: LocationStrategy , useClass:HashLocationStrategy}], 
+  providers: [{provide: LocationStrategy , useClass:HashLocationStrategy},DatePipe], 
   bootstrap: [AppComponent]
 })
 export class AppModule { 

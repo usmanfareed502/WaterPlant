@@ -43,19 +43,22 @@
   <div class="col-12 col-md-12  col-sm-12"  >
     <div class="row" style="margin-top: 20px;">
       <div class="col-md-5" >
-        <select class="form-select" aria-label="Default select example"  >
-            <option value="" disabled selected>Select Expance Name</option>
-            <option value="" > <!-- <td>{{item.name}}</td> --></option>
-        </select>
+        <select  class="form-select" aria-label="Default select example"  (change)="selectname($event)">
+                            <option value="" disabled selected>Name</option>
+                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
+                                <td>{{item.name}}</td>
+                            </option>
+                        </select>
     </div>
     <div class="col-md-5">
-      <select class="form-select" aria-label="Default select example"  >
-          <option value="" disabled selected>Select Expance Name</option>
-          <option value="" >  <!-- <td>{{item.name}}</td> --></option>
+      <select class="form-select" aria-label="Default select example" (change)="selectpymentstatus($event)">
+          <option value="" disabled selected>Select Payment Status</option>
+          <option value="confirm">Confirm Payment</option>
+          <option value="pending">Pending Payment</option>
       </select>
   </div>
   <div class="col-md-2">
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Filter</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata()">Filter</button>
 </div>
     </div>
 </div>
