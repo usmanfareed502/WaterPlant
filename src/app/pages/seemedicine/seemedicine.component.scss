@@ -15,6 +15,10 @@
   text-align: center !important;
   font-size: 20px;
   padding-left: 15px;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
   } 
 *{
   box-sizing: border-box;

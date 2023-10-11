@@ -8,12 +8,7 @@ import { GlobalService } from 'src/app/services/global.service';
   styleUrls: ['./datadetails.component.scss']
 })
 export class DatadetailsComponent {
-
-<<<<<<< HEAD
-  
-=======
->>>>>>> 9bfe86648527424fe58a507e6ccb6afdb8961fb8
-
+ 
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   public transationdetal: any;
   ngOnInit(){
