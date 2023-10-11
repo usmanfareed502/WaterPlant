@@ -15,11 +15,6 @@ export class SeemedicineComponent {
 
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   ngOnInit() {
-    this.apicall.api_getmedicine();
-    this.global.Getmedicine.subscribe( res=>{
-      this.allmedicine = res;
-      console.log(this.allmedicine);
-    })
-    
+ 
   }
 }
