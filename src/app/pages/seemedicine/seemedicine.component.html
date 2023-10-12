@@ -83,7 +83,8 @@
             <th >Total</th>
             <th >Sumitted Bill</th>
             <th >Remaining Bill</th>
-            <th >Pay Amount</th>
+            <th >Payment Status</th>
+            <th>Pay Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -100,12 +101,39 @@
           <td>{{item.total}}</td>
           <td>{{item.submittedBill}}</td>
           <td>{{item.remainingBill}}</td>
-          <td *ngIf="item.remainingBill != 0"><button type="button" class="btn btn-primary">Pay</button></td>
+          <td>{{item.paymentstatus}}</td>
+          <td *ngIf="item.remainingBill != 0"><button class="button" class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
         </tr>
         <tbody>
     </table>
 
-
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row" ngClass="container">
+                    <div class="col-md-12">
+                      <div>
+                       <h2>Remaining Payment</h2>
+                    </div>
+                        <div>
+                            <label for="name" class="label">Enter Amount</label>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="insertremaingpayment()">+Add</button>
+  
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- <button class="button" class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add</button> -->
 
   </div>
   

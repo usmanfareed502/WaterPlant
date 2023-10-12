@@ -10,7 +10,9 @@ import { GlobalService } from 'src/app/services/global.service';
 export class SeemedicineComponent {
   public allbills: any;
   public getcusromer1: any;
+  public payAmount : any = {b_id:'', submittedBill:'', remainingBill:'', paymentstatus:''}
   public filter: any = { c_id:null,paymentstatus: null};
+  totalamount: any;
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   async ngOnInit() {
     this.apicall.api_getallbils();
@@ -35,5 +37,28 @@ export class SeemedicineComponent {
   filterdata(){
     console.log(this.filter)
     this.apicall.api_getallbilsbyfilter(this.filter)
+  }
+  paymodelopen(item : any){ 
+    this.payAmount.b_id = item.b_id;
+    this.payAmount.submittedBill = item.submittedBill;
+    this.payAmount.remainingBill = item.remainingBill;
+    this.totalamount = item.total;
+
+  }
+  insertremaingpayment(){
+    this.payAmount.remainingBill=this.payAmount.submittedBill-this.totalamount;
+    if(this.totalamount == this.payAmount.submittedBill){
+      this.payAmount.paymentstatus = 'confirm';
+    }
+    else{
+      this.payAmount.paymentstatus = 'pending';
+  }
+  console.log(this.payAmount)
+  this.apicall.api_updatebilldetails(this.payAmount)
+  this.apicall.api_getallbils();
+    this.global.Getcustomerbills.subscribe( res =>{
+      this.allbills = res;
+      console.log(this.allbills);
+    })
   }
 }

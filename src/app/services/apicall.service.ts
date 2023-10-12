@@ -161,6 +161,14 @@ async api_addexpance(data : any ){
              console.log(err);
            });
          }
+         async api_updatebilldetails(data : any ){
+          await this.authservice.con(data, 'updatebilldetails').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+           console.log(this.data)
+           }, (err) => {
+             console.log(err);
+           });
+         }
     
 
 
