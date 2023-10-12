@@ -44,12 +44,12 @@
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div>
                             <label for="name" class="label">Select Customer</label>
                         </div>
                         <select ngClass="form-control" placeholder="Search"
-                            class="form-select form-select-lg mb-3 select" style="height: 56px;"
+                        class="form-select" aria-label="Default select example"
                             aria-label="Select  Gender" (change)="selectname($event)">
                             <option value="" disabled selected>Name</option>
                             <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
