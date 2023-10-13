@@ -38,6 +38,29 @@ h2{
   color: white;
   padding: 30px 0;
 }
+.pendingg{
+  color: white;
+    background-color: #87e32bb8;
+    border-radius: 21px;
+    text-align: center;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: orangered;
+}
+.successfulll{
+     color: white;
+    /* background-color: rgba(135, 227, 43, 0.7215686275); */
+    background-color: #80ffff;
+    border-radius: 21px;
+    text-align: center;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: orangered;
+}
 
 /* Table Styles */
 
@@ -144,9 +167,7 @@ height: 50px;
       text-align: left;
   }
 }
-
-
-
-
-
-
+.table-class {
+  overflow: auto;
+  border-radius: 20px;
+}

@@ -63,12 +63,16 @@ export class AddmedicineComponent {
     await this.apicall.api_addcustomer(this.user)
     console.log(this.user)
     this.user = { name: '', number: '', address: '' }
+   this.apicall.api_getcustomer()
+    
+
   }
 
   async addexpance() {
     await this.apicall.api_addexpance(this.data)
     console.log(this.data)
-    this.data = { name: '' }
+    this.data = { name: '' };
+    this.apicall.api_getexpance();
   }
   expensename(event: any){
     this.data1.e_id = event.target.value;
@@ -80,6 +84,8 @@ export class AddmedicineComponent {
     console.log(this.data1)
     this.data1 = { e_id: '', ex_amount: '', description: '', date: '' }
     this.apicall.api_getexpancedetails();
+   
+
   }
 
 }

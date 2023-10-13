@@ -1,16 +1,12 @@
-<div  ngClass="container">
-  <div style="height:80px;margin-top:-15px;">
+<div ngClass="container">
+  <div  style="height:80px;margin-top:-15px;">
     <button style="position: absolute;right:25px;" class="button" 
     type="button" class="btn btn-primary"  >Refresh</button>
-</div>
+  </div>
     <div class="col-12 col-md-12  col-sm-12">
       <div class="row"  >
           <div class="col-md-4 col-sm-12"  >
              <div class="card" >
-           
-                         <!-- <svg xmlns="http://www.w3.org/2000/svg"  style="margin: auto;margin-top:7px;" width="40" height="40" fill="currentColor"  class="bi bi-currency-rupee text-secondary" viewBox="0 0 16 16">
-                          <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
-                        </svg> -->
             <p style="margin-top: 5px;">
               RS:{{this.allbills[2][0].totalbill}}<br>
               Total Payment
@@ -19,10 +15,6 @@
           </div>                                           
           <div class="col-md-4  col-sm-12">
             <div class="card" >
-             
-              <!-- <svg xmlns="http://www.w3.org/2000/svg"  style="margin: auto;margin-top:7px;" width="40" height="40" fill="currentColor"  class="bi bi-currency-rupee text-warning" viewBox="0 0 16 16">
-                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
-              </svg> -->
             <p style="margin-top: 5px;">
               RS:{{this.allbills[1][0].submitbill}}<br>
               Submit Payment
@@ -31,10 +23,6 @@
           </div>
           <div class="col-md-4  col-sm-12">
             <div class="card" >
-            
-              <!-- <svg xmlns="http://www.w3.org/2000/svg"  style="margin: auto;margin-top:7px;" width="40" height="40" fill="currentColor"  class="bi bi-currency-rupee text-info" viewBox="0 0 16 16">
-                <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
-              </svg> -->
             <p style="margin-top: 5px;">
               RS:{{this.allbills[3][0].remainigbill}}<br>
               Remaining Payment
@@ -43,7 +31,7 @@
           </div>
       </div>
   </div>
-
+  
   <div class="col-12 col-md-12  col-sm-12"  >
     <div class="row" style="margin-top: 20px;">
       <div class="col-md-5" >
@@ -63,12 +51,22 @@
   </div>
   <div class="col-md-2">
     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata()">Filter</button>
-</div>
+  </div>
     </div>
+  </div>
+  
+  
 </div>
 
- 
-    <table class="fl-table" style="margin-top: 40px;">
+
+
+
+
+
+
+
+<div  class="table-class">
+    <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
       <thead>
         <tr>
             <th >No</th>
@@ -101,7 +99,7 @@
           <td>{{item.total}}</td>
           <td>{{item.submittedBill}}</td>
           <td>{{item.remainingBill}}</td>
-          <td>{{item.paymentstatus}}</td>
+          <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
           <td *ngIf="item.remainingBill != 0"><button class="button" class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
         </tr>
         <tbody>
@@ -133,7 +131,10 @@
     </div>
   </div>
   
-  <!-- <button class="button" class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add</button> -->
+ 
+
+
+
 
   </div>
   

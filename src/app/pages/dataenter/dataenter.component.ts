@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApicallService } from 'src/app/services/apicall.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dataenter',
   templateUrl: './dataenter.component.html',
@@ -19,7 +20,7 @@ export class DataenterComponent {
   public data1: any = { name: '', number: '', address: '' }
   public getcusromer1: any;
 
-  constructor(public apicall: ApicallService, public global: GlobalService) { }
+  constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
 
   async ngOnInit() {
     await this.apicall.api_getcustomer();
@@ -42,6 +43,8 @@ export class DataenterComponent {
   addamount(event : any){
     this.insertbill.amount = event.target.value;
     this.insertbill.total = this.insertbill.amount;
+    this.insertbill.remainingBill = this.insertbill.total 
+
   }
   adddicount(event : any){
  this.insertbill.discount = event.target.value;
@@ -64,10 +67,12 @@ export class DataenterComponent {
     }
     console.log(this.insertbill)
     this.apicall.api_addbilldetails(this.insertbill)
+    this.router.navigate(['/default/seemedicine'])
     this.insertbill= {
       c_id: '',date: '', security: '', no_of_boottels:'', return: '', empty: '', amount: '', discount: '',
       total: '', submittedBill: '', remainingBill: '',paymentstatus:''
     }
+
   }
 
 }

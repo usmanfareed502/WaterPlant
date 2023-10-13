@@ -43,7 +43,7 @@ export class SeemedicineComponent {
     this.payAmount.submittedBill = item.submittedBill;
     this.payAmount.remainingBill = item.remainingBill;
     this.totalamount = item.total;
-
+    this.apicall.api_getallbils();
   }
   insertremaingpayment(){
     this.payAmount.remainingBill=this.payAmount.submittedBill-this.totalamount;
