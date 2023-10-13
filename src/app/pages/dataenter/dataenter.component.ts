@@ -72,7 +72,7 @@ export class DataenterComponent {
       c_id: '',date: '', security: '', no_of_boottels:'', return: '', empty: '', amount: '', discount: '',
       total: '', submittedBill: '', remainingBill: '',paymentstatus:''
     }
-
+    this.apicall.api_getallbils();
   }
 
 }
