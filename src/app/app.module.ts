@@ -24,6 +24,7 @@ import { DataenterComponent } from './pages/dataenter/dataenter.component';
 import { DatadetailsComponent } from './pages/datadetails/datadetails.component';
 import { AddmedicineComponent } from './pages/addmedicine/addmedicine.component';
 import { SeemedicineComponent } from './pages/seemedicine/seemedicine.component';
+import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { SeemedicineComponent } from './pages/seemedicine/seemedicine.component'
     DatadetailsComponent,
     AddmedicineComponent,
     SeemedicineComponent,
+    CustomerDetailComponent,
     // DashboardComponent
   ],
   imports: [

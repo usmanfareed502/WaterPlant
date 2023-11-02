@@ -54,6 +54,14 @@ export class ApicallService {
    });
  }
 
+ async api_editcustomer(data : any ){
+  await this.authservice.con(data, 'editcustomer').then(async (res) => {
+     this.data = JSON.parse(String(res).toString());
+    console.log(this.data)
+   }, (err) => {
+     console.log(err);
+   });
+ }
 async api_getcustomer() {
 await this.authservice.getdata('getcustomer').then((result) => {
     this.data = JSON.parse(String(result));
@@ -164,6 +172,24 @@ async api_addexpance(data : any ){
          async api_updatebilldetails(data : any ){
           await this.authservice.con(data, 'updatebilldetails').then(async (res) => {
              this.data = JSON.parse(String(res).toString());
+           console.log(this.data)
+           }, (err) => {
+             console.log(err);
+           });
+         }
+         async api_getallbilsbyc_id(data : any ){
+          await this.authservice.con(data, 'getallbilsbyc_id').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+             this.global.set_getdatabyc_id(this.data)
+           console.log(this.data)
+           }, (err) => {
+             console.log(err);
+           });
+         }
+         async api_getallbilsbyc_idbyafilter(data : any ){
+          await this.authservice.con(data, 'getallbilsbyc_idbyafilter').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+             this.global.set_getdatabyc_id(this.data)
            console.log(this.data)
            }, (err) => {
              console.log(err);

@@ -34,7 +34,7 @@
   
   <div class="col-12 col-md-12  col-sm-12"  >
     <div class="row" style="margin-top: 20px;">
-      <div class="col-md-5" >
+      <div class="col-md-3" >
         <select  class="form-select" aria-label="Default select example"  (change)="selectname($event)">
                             <option value="" disabled selected>Name</option>
                             <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
@@ -42,14 +42,17 @@
                             </option>
                         </select>
     </div>
-    <div class="col-md-5">
+    <!-- <div class="col-md-3">
       <select class="form-select" aria-label="Default select example" (change)="selectpymentstatus($event)">
           <option value="" disabled selected>Select Payment Status</option>
           <option value="confirm">Confirm Payment</option>
           <option value="pending">Pending Payment</option>
       </select>
-  </div>
-  <div class="col-md-2">
+  </div> -->
+  <div class="col-md-3">
+    <input type="date"  class="form-control" (change)="selectdate($event)">
+ </div>
+  <div class="col-md-3">
     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata()">Filter</button>
   </div>
     </div>
@@ -58,14 +61,20 @@
   
 </div>
 
+<div class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
+  <button type="button" class="btn  w-100"
+      [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="pendingbills()">Pending Bills</button>
+  <button type="button" class="btn   w-100"
+      [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="paidbills()">Paid Bills</button>
+</div>
 
 
 
 
-
-
-
-<div  class="table-class">
+<form *ngIf="isshowcustomer">
+  <div  class="table-class">
     <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
       <thead>
         <tr>
@@ -86,7 +95,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of allbills[0] ; let i = index">
+        <tr *ngFor="let item of pendingbill ; let i = index">
           <td>{{i}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
@@ -130,12 +139,54 @@
         </div>
     </div>
   </div>
-  
- 
-
-
-
-
   </div>
+
+
+
+</form>
+<form *ngIf="isshowexpence">
+  <div  class="table-class">
+    <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
+      <thead>
+        <tr>
+            <th >No</th>
+            <th >Customer Name</th>
+            <th >Date</th>
+            <th >Security</th>
+            <th >No Of Bottels</th>
+            <th >Return</th>
+            <th >Empty</th>
+            <th >Amount</th>
+            <th >Discount</th>
+            <th >Total</th>
+            <th >Sumitted Bill</th>
+            <th >Remaining Bill</th>
+            <th >Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of confirmbills ; let i = index">
+          <td>{{i}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.security}}</td>
+          <td>{{item.no_of_boottels}}</td>
+          <td>{{item.return}}</td>
+          <td>{{item.empty}}</td>
+          <td>{{item.amount}}</td>
+          <td>{{item.discount}}</td>
+          <td>{{item.total}}</td>
+          <td>{{item.submittedBill}}</td>
+          <td>{{item.remainingBill}}</td>
+          <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
+        </tr>
+        <tbody>
+    </table>
+
+   
+  </div>
+</form>
+
+
   
   

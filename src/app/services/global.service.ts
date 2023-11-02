@@ -72,7 +72,12 @@ this.getexpancedetails.next(getexpancedetails)
 console.log(getexpancedetails)
 }
 
-
+private getcustomerdetail=new BehaviorSubject<any>('');
+public Getcustomerdetail=this.getcustomerdetail.asObservable()
+set_getdatabyc_id(getcustomerdetail:any){
+this.getcustomerdetail.next(getcustomerdetail)
+console.log(getcustomerdetail)
+}
 
 
 

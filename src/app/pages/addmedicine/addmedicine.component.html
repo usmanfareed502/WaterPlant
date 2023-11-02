@@ -61,6 +61,9 @@
                         <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Name}}</th>
                         <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Number}}</th>
                         <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Address}}</th>
+                        <th style="width: 400px;text-align: center;">Status</th>
+                        <th style="width: 400px;text-align: center;">Edit</th>
+                        <th style="width: 400px;text-align: center;">Detail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,12 +71,65 @@
                         <td style="width: 400px;text-align: center;"> {{item.name}}</td>
                         <td style="width: 400px;text-align: center;"> {{item.number}}</td>
                         <td style="width: 400px;text-align: center;">{{item.address}}</td>
+                        <td style="width: 400px;text-align: center;">
+                            <p [ngClass]="{'pendingg':item.status === 'pending','successfulll':item.status === 'active'}"style="margin:0px;">{{item.status}}</p>
+                            </td>
+                        
+                        <td style="width: 400px;text-align: center;"><button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdropudate" (click)="editcustomer(item)">Edit</button>
+                        </td>
+                        <td style="width: 400px;text-align: center;"><button class="button" (click)="viewcustomerdetail(item.c_id)">Details</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </form>
-
+    <div class="modal fade" id="staticBackdropudate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="col-12 col-md-12  col-sm-12">
+                <h2 style="padding: 18px;">Edit Customer Detail</h2>
+                <div class="row" ngClass="container">
+                    <div class="col-md-12">
+                        <div>
+                            <label for="name" class="label">Customer Name</label>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Customer Name"
+                            [ngModelOptions]="{standalone:true}" [(ngModel)]="customerDtail.name">
+                    </div>
+                    <div class="col-md-12">
+                        <div>
+                            <label for="name" class="label">Customer Number</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="Number"
+                            [ngModelOptions]="{standalone:true}" [(ngModel)]="customerDtail.number">
+                    </div>
+                    <div class="col-md-12">
+                        <div>
+                            <label for="name" class="label">Customer Address</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="Address"
+                            [ngModelOptions]="{standalone:true}" [(ngModel)]="customerDtail.address">
+                    </div>
+                    <div class="col-md-12">
+                        <div>
+                            <label for="name" class="label">Customer Address</label>
+                        </div>
+                        <select class="form-select" (ngModelChange)="updatestatus($event)" [ngModelOptions]="{standalone:true}" [(ngModel)]="customerDtail.status">
+                            <option value="pending">Pending</option>
+                            <option value="active">Active</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updatecustomer()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <form *ngIf="isshowexpence">

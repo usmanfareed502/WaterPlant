@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApicallService } from 'src/app/services/apicall.service';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -19,7 +20,7 @@ export class AddmedicineComponent {
   public user: any = { name: '', number: '', address: '' }
   public data: any = { name: '' }
   public data1: any = { e_id: '', ex_amount: '', description: '', date: '' }
-
+  public customerDtail : any ={ c_id:'' ,name: '', number: '', address: '',status:''}
   public isshowcustomer = true;
   public isshowexpence = false;
 
@@ -28,7 +29,7 @@ export class AddmedicineComponent {
   public getexpence: any;
   public getbilldetails: any;
   public getexpancedetails: any;
-  constructor(public apicall: ApicallService, public global: GlobalService) { }
+  constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
   async ngOnInit() {
     await this.apicall.api_getcustomer();
     this.global.Getcustomer.subscribe(res => {
@@ -67,7 +68,23 @@ export class AddmedicineComponent {
     
 
   }
-
+  editcustomer(item : any){
+    this.customerDtail = item
+  }
+  async updatestatus($event:any) {
+    console.log($event)
+    this.customerDtail.status = $event;
+    
+  }
+  async updatecustomer(){
+    console.log(this.customerDtail)
+    await this.apicall.api_editcustomer(this.customerDtail)
+    await this.apicall.api_getcustomer();
+  }
+  viewcustomerdetail(c_id : any){
+    console.log(c_id)
+    this.router.navigate(['/default/customer-detail'] , { state : { data:c_id}});
+  }
   async addexpance() {
     await this.apicall.api_addexpance(this.data)
     console.log(this.data)
