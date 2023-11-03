@@ -18,6 +18,7 @@ export class SeemedicineComponent {
   public pendingbill: any;
   public confirmbills: any;
   public segmentvalue: any = "complete";
+  public whatsappText:string = 'whatsapp://send?text='
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   async ngOnInit() {
     this.apicall.api_getallbils();
@@ -35,6 +36,7 @@ export class SeemedicineComponent {
       console.log(this.getcusromer1)
     });
   }
+
   selectname(event : any){
     console.log(event.target.value)
     this.filter.c_id = event.target.value;

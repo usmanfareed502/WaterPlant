@@ -41,7 +41,7 @@ const routes: Routes = [
         DefaultlayoutComponent,
         HeaderComponent,
         SidebarComponent,
-        DashboardComponent
+        DashboardComponent,
     ],
     imports: [
       HttpClientModule,

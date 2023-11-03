@@ -25,6 +25,7 @@ import { DatadetailsComponent } from './pages/datadetails/datadetails.component'
 import { AddmedicineComponent } from './pages/addmedicine/addmedicine.component';
 import { SeemedicineComponent } from './pages/seemedicine/seemedicine.component';
 import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
+import { SafeurlPipe } from './services/pipes/safeUrl/safeurl.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { CustomerDetailComponent } from './pages/customer-detail/customer-detail
     AddmedicineComponent,
     SeemedicineComponent,
     CustomerDetailComponent,
+    SafeurlPipe,
     // DashboardComponent
   ],
   imports: [

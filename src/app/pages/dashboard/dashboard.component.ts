@@ -8,7 +8,7 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class DashboardComponent {
   getcusromer1: any;
-  transationdetal: any;
+  transationdetal: any[] = [];
   allbills: any;
   pendingbills: any;
   confirmbills: any;

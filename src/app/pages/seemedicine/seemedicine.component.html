@@ -92,11 +92,12 @@
             <th >Remaining Bill</th>
             <th >Payment Status</th>
             <th>Pay Amount</th>
+            <th>Share Bill</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of pendingbill ; let i = index">
-          <td>{{i}}</td>
+          <td>{{i+1}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
           <td>{{item.security}}</td>
@@ -109,7 +110,15 @@
           <td>{{item.submittedBill}}</td>
           <td>{{item.remainingBill}}</td>
           <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
-          <td *ngIf="item.remainingBill != 0"><button class="button" class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
+          <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
+          <td>  <a [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
+           
+          
+            <button class="button" type="button" class="btn btn-primary">Send</button>
+            </a></td>
+          <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
+            <button class="button" type="button" class="btn btn-primary">Send</button>
+            </a></td> -->
         </tr>
         <tbody>
     </table>
@@ -166,7 +175,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of confirmbills ; let i = index">
-          <td>{{i}}</td>
+          <td>{{i+1}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
           <td>{{item.security}}</td>
