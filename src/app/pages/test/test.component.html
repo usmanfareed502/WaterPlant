@@ -1,1 +1,30 @@
-<p>test works!</p>
+
+        <div class="card" style="overflow-x: auto;margin-top:70px; ">
+            <table class="table table-striped mb-0">
+                <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                    <tr>
+                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Name}}</th>
+                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Number}}</th>
+                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Address}}</th>
+                        <th style="width: 400px;text-align: center;">Status</th>
+                        <th style="width: 400px;text-align: center;">Edit</th>
+                        <th style="width: 400px;text-align: center;">Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of getcusromer1">
+                        <td style="width: 400px;text-align: center;"> {{item.name}}</td>
+                        <td style="width: 400px;text-align: center;"> {{item.number}}</td>
+                        <td style="width: 400px;text-align: center;">{{item.address}}</td>
+                        <td style="width: 400px;text-align: center;">
+                            <p [ngClass]="{'pendingg':item.status === 'pending','successfulll':item.status === 'active'}"style="margin:0px;">{{item.status}}</p>
+                            </td>
+                        
+                        <td style="width: 400px;text-align: center;"><button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdropudate" (click)="editcustomer(item)">Edit</button>
+                        </td>
+                        <td style="width: 400px;text-align: center;"><button class="button" (click)="viewcustomerdetail(item.c_id)">Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

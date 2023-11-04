@@ -1,0 +1,74 @@
+.form-control{
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: transparent;
+    width: 100%;
+    box-shadow:none !important; 
+    padding-left: 5px;
+  }
+  .label{
+    font-size:16px;
+    margin-top: 5px;
+  }
+  .button{
+    border-radius: 10px;
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    color: white;
+    background-color:  #ff470d;;
+    border:  #ff470d;;
+   }
+   .button:hover{
+    background: white !important;
+    color:  #ff470d;
+   } 
+   .tonpmargin{
+    margin-top: 30px;
+   }
+  button{
+    border: none;
+  }
+  html,
+  body,
+  .intro {
+    height: 100%;
+  }
+  table td,
+  table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .card {
+    border-radius:0px;
+    // border-top-right-radius: 10px;
+    // border-top-left-radius: 10px;
+  }
+  .container{
+    margin-top: 30px;
+  }
+  .pendingg{
+    color: white;
+      background-color: #87e32bb8;
+      border-radius: 21px;
+      text-align: center;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: orangered;
+  }
+  .successfulll{
+       color: white;
+      /* background-color: rgba(135, 227, 43, 0.7215686275); */
+      background-color: #80ffff;
+      border-radius: 21px;
+      text-align: center;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: orangered;
+  }
