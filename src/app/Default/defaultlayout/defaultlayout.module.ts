@@ -29,6 +29,7 @@ const routes: Routes = [
           { path: 'default/addmedicine', component:   AddmedicineComponent },
           { path: 'default/seemedicine', component:    SeemedicineComponent },
           { path: 'default/customer-detail', component:    CustomerDetailComponent },
+          { path: 'default/test', component:    TestComponent },
           // { path: 'default/test', component: TestComponent },
 
   
