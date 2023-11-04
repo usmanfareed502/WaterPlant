@@ -48,14 +48,24 @@
                         <div>
                             <label for="name" class="label">Select Customer</label>
                         </div>
-                        <select ngClass="form-control" placeholder="Search"
+
+                        <ngx-mat-select-search
+                         [formControl]="getcusromer1" 
+                       placeholderLabel="Find bank..." 
+                       noEntriesFoundLabel="'no matching bank found'"
+                       >
+                    </ngx-mat-select-search>
+                        <ng-multiselect-dropdown ngClass="form-control" placeholder="Search"
                         class="form-select" aria-label="Default select example"
-                            aria-label="Select  Gender" (change)="selectname($event)">
-                            <option value="" disabled selected>Name</option>
-                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
+                            aria-label="Select  Gender" (change)="selectname($event)"
+                            [settings]="linkcolordropdownSettings"
+                            [data]="getcusromer1"
+                            >  
+                            <!-- <option value="" >Name</option> -->
+                            <!-- <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.name}}</td>
-                            </option>
-                        </select>
+                            </option> -->
+                        </ng-multiselect-dropdown>
                     </div>
                     <!-- <div class="col-md-4">
                         <div>

@@ -19,7 +19,9 @@ export class DataenterComponent {
   public user: any = { name: '', number: '', address: '' }
   public data1: any = { name: '', number: '', address: '' }
   public getcusromer1: any;
-
+  public linkcolordropdownSettings={}
+  public allowSearchFilter=true;
+  public alloptionsdata: any = []
   constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
 
   async ngOnInit() {
@@ -28,6 +30,13 @@ export class DataenterComponent {
       this.getcusromer1 = res;
       console.log(this.getcusromer1)
     });
+    this.linkcolordropdownSettings = {
+      textField: 'name',
+      allowSearchFilter: true,
+      clearSearchFilter: true,
+      enableCheckAll:false,
+      singleSelection:true
+    };
   }
 
   async addcustomer() {
