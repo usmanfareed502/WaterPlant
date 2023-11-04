@@ -1,7 +1,10 @@
 <div ngClass="container">
     <div  style="height:80px;margin-top:-15px;">
       <button style="position: absolute;right:25px;" class="button" 
+      
       type="button" class="btn btn-primary" (click)="refresh()">Refresh</button>
+      <button style="position: absolute;right:150px;"  printSectionId="print-section" styleSheetFile="assets/css/orderprint.css" ngxPrint
+      class="btn btn-primary">Print Bills</button>
     </div>
       <div class="col-12 col-md-12  col-sm-12">
         <div class="row"  >
@@ -47,6 +50,10 @@
     <div class="col-md-3">
       <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata()">Filter</button>
     </div>
+    <!-- <div class="col-md-4">
+      <button printSectionId="print-section" styleSheetFile="assets/css/orderprint.css" ngxPrint
+      class="btn btn-primary">Print Bills</button>
+    </div> -->
       </div>
     </div>
     
@@ -117,4 +124,68 @@
         </div>
     </div>
   </div>
+  </div>
+  <div id="print-section" class="pdf">
+    <div id="demo">
+      <div id="head">
+        <h1 id="pharmname">Water Plant</h1>
+      </div>
+      <div id="tablediv">
+        <h2 id="ptdetail">Bills Detail</h2>
+      
+        <table id="table">
+          <thead>
+          <tr>
+            <th id="td1">No</th>
+            <th id="td1">Customer Name</th>
+            <th id="td1">Date</th>
+            <th id="td1">Security</th>
+            <th id="td1">No Of Bottels</th>
+            <th id="td1">Return</th>
+            <th id="td1">Empty</th>
+            <th id="td1">Amount</th>
+            <th id="td1">Discount</th>
+            <th id="td1">Total</th>
+            <th id="td1">Sumitted Bill</th>
+            <th id="td1">Remaining Bill</th>
+            <th id="td1">Payment Status</th>
+          </tr>
+          </thead>
+          <tbody>
+  
+          <tr *ngFor="let item of allbills[0] ; let i = index">
+            <td id="tdname">{{i+1}}</td>
+            <td id="tdname">{{item.name}}</td>
+            <td id="tdname">{{item.date}}</td>
+            <td id="tdname">{{item.security}}</td>
+            <td id="tdname">{{item.no_of_boottels}}</td>
+            <td id="tdname">{{item.return}}</td>
+            <td id="tdname">{{item.empty}}</td>
+            <td id="tdname">{{item.amount}}</td>
+            <td id="tdname">{{item.discount}}</td>
+            <td id="tdname">{{item.total}}</td>
+            <td id="tdname">{{item.submittedBill}}</td>
+            <td id="tdname">{{item.remainingBill}}</td>
+            <td id="tdname">{{item.paymentstatus}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table id="table">
+          <tr>
+            <td id="td1"> Total Payment: RS:{{this.allbills[2][0].totalbill}}</td>
+            <td id="td1"> Submit Payment: RS:{{this.allbills[1][0].submitbill}}</td>
+            <td id="td1"> Remaining Payment: RS:{{this.allbills[3][0].remainigbill}}</td>
+          </tr>
+        </table>
+        <!-- <div id="footer">
+         <div id="ptext">
+          ADDRESS: Al Hamra Chowk Near Church Road Pakpattan<br>
+          Email: hamzacardexhospital@gmail.com<br>
+          Tel : 0457 380001<br>
+          Developed By Learn 2 Earn Software Solution
+         </div>
+        </div> -->
+      </div>
+    </div>
+    
   </div>

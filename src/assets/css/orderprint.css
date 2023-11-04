@@ -1,58 +1,16 @@
 #demo{
     height: 100%;
-    width: 100%;
-
 }
 #head{
     width: 100%;
     display: flex;
-    flex-direction: row;   
-    justify-content: space-between;
-
+    flex-direction: row;
+    /* justify-content: space-between; */
+    justify-content: center;
 }
 #divimg{
-    width: 60%;
-  }
-  #name{
-    font-size: 15px;
-    font-family: system-ui;
-    padding: 20px;
-}
-#userdetail{
-    font-size: 15px;
-    font-family: system-ui;
-    padding: 10px;
-}
-#ecoimg{
-    width: 170px;
-    height: 100px;
-}
-#pharmname{
-    color: #ff470d;
-    font-weight: 800;
-    /* font-style: italic; */
-}
-
-#ordername{
-    font-family: system-ui;
-}
-#orderstatus{
-    font-family: system-ui;
-}
-#bagdetail{
-    display: flex;
-}
-#custimg{
-    height: 50px;
-    width: 50px;
-    margin-left: 20px;
-}
-#thcust{
-    font-family: system-ui;
-    font-size: 15px;
-    color: rgb(179, 177, 177);
-    display: flex;
-    flex-direction: row;
+  display: flex;
+    float: left;
 }
 #img{
     
@@ -60,63 +18,58 @@
     height: 80px;
     
 }
-#oreder{
-    width: 100%;
+#name{
+    font-size: 15px;
+    font-family: system-ui;
+}
+
+
+#ptno{
+    margin-left: 10;
+    height: 150px;
+    width: 60%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-content: center;
 }
 
-#divhd{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
-#slip{
-    font-size: 20px;
-    font-weight: 600;
-    font-family: inherit;
-}
+#pid{
+    float: right;
+    margin-top: 20px;
+    font-family: system-ui;
 
+}
+#pid1{
+    font-family: system-ui;
+}
 #tablediv{
-    margin-top: 10px;
     width: 100%;
-    border: 1px solid rgba(0,0,0,.125);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+   
 }
-#orderdiv{
-    margin-top: 10px;
-    width: 100%;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: 15px;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+#span1{
+    font-family: system-ui;
 }
 #table{
     width: 100%;
+    margin-top: 20px;
 }
-#tdname{
-        text-align: left;
-        padding: 5;
-        height: 20px;
+#td1{
+    font-family: system-ui;
+    font-size: 13px;
+    padding: 5;
+   
 }
-#tdname,#table{
+#generic{
+    font-family: system-ui;
+    font-size: 13px;
+    padding: 5;
+    width: 200px;
+}
+#td1,#generic,#tdname,#table{
     border: 1px solid black;
     border-collapse: collapse;
-    font-family: inherit;
-}
-#table1{
-    width: 100%;
-    padding: 10px;
 }
 #testname{
     font-style: italic;
@@ -124,83 +77,7 @@
     width: 200px;   
     border: 1px solid black;
 }
-/* #th1,#td2,#table1{
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-family: inherit;
-} */
-#th1{
-    /* text-align: left; */
-    font-family: system-ui;
-    font-size: 15px;
-    color: rgb(179, 177, 177);
-    width: 25%;
-}
-#imgset{
-    width: 100px;
-    height: 100px;
-}
-#spanstatus{
-    font-family: system-ui;
-    font-size: 15px;
-    color: rgb(179, 177, 177);
-}
-#th2{
-    text-align: right;
-    font-family: system-ui;
-    font-size: 15px;
-    color: rgb(179, 177, 177);
-}
-#span{
-    margin-left: 20px;
-}
-#td2{
-    height: 30px;
-    padding: 5;
-}
-#td3,#td4,#td5,#th3,#table2{
-    border: 1px solid black;
-    border-collapse: collapse;
 
-}
-#table2{
-    width: 100%;
-    margin-top: 20px;
-}
-#th3{
-    text-align: left;
-    padding: 5;
-    height: 20px;
-    font-style: inherit;
-}
-#td3{
-    text-align: left;
-    padding: 5;
-    height: 20px;
-}
-#td4{
-    text-align: left;
-    padding: 5;
-    height: 40px;
-    padding-top: -5;
-}
-#sg1{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-#sintable{
-    width: 100%;
-    margin-top: 50px;
-}
-#carac{
-    text-align: right;
-    width: 10%;
-}
-#tdsin{
-    border-bottom: 1px solid black;
-    width: 20%;
-}
 #ptext{
     font-family: system-ui;
     text-align: center;
@@ -217,4 +94,62 @@
     position: absolute;
     bottom: 10px;
     
+}
+#tdname{
+    color: rgba(0, 0, 0, 0.561);
+    font-family: system-ui;
+    font-size: 13px;
+    padding: 5;
+}
+#veidetail{
+    font-family: system-ui;
+}
+#ptdetail{
+    font-family: system-ui;
+}
+#imgtime{
+    padding: 20px;
+}
+#shifted{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    border: 1px solid black;
+}
+#idtime{
+    height: 250px;
+    width: 15%;
+    border: 1px solid black;
+}
+#d1{
+    height: 250px;
+    width: 85%;
+    
+
+}
+#d2{
+    margin-top: -20px;
+    width: 100%;
+    display: flex;
+}
+#p1{
+    margin-left: 20px;
+}
+#img2{
+    height: 150px;
+    padding: 20px;
+}
+#d3{
+        width: 100%;
+        height: 30px;
+        display: flex;
+}
+#d4{
+    width: 85%;
+    height: 30px;
+   
+}
+#pharmname{
+    color: orangered;
+    font-weight: 800;
 }
