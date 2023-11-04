@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class DataenterComponent {
 
   public insertbill: any = {
-    c_id: '',date: '', security: '', no_of_boottels:'', return: '', empty: '', amount: '', discount: '',
+    c_id: '',date: '', no_of_boottels:'', amount: '', discount: '',
     total: '', submittedBill: 0, remainingBill: '',paymentstatus:''
   }
 
@@ -69,7 +69,7 @@ export class DataenterComponent {
     this.apicall.api_addbilldetails(this.insertbill)
     this.router.navigate(['/default/seemedicine'])
     this.insertbill= {
-      c_id: '',date: '', security: '', no_of_boottels:'', return: '', empty: '', amount: '', discount: '',
+      c_id: '',date: '', no_of_boottels:'', amount: '', discount: '',
       total: '', submittedBill: '', remainingBill: '',paymentstatus:''
     }
  this.apicall.api_getallbils();

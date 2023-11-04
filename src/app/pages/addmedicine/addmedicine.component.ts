@@ -17,7 +17,7 @@ export class AddmedicineComponent {
     Date: 'Date', Amount: 'Amount', BILL: 'BILL', Details: 'Details',
   }
 
-  public user: any = { name: '', number: '', address: '' }
+  public user: any = { name: '', number: '', address: '' , security: ''}
   public data: any = { name: '' }
   public data1: any = { e_id: '', ex_amount: '', description: '', date: '' }
   public customerDtail : any ={ c_id:'' ,name: '', number: '', address: '',status:''}
@@ -63,7 +63,7 @@ export class AddmedicineComponent {
   
     await this.apicall.api_addcustomer(this.user)
     console.log(this.user)
-    this.user = { name: '', number: '', address: '' }
+    this.user = { name: '', number: '', address: '' ,security:''}
    this.apicall.api_getcustomer()
     
 

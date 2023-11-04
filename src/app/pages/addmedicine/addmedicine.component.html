@@ -43,6 +43,13 @@
                                 <input type="text" class="form-control" id="name" placeholder="Address"
                                     [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
                             </div>
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">Security</label>
+                                </div>
+                                <input type="number" class="form-control" id="name" placeholder="Security"
+                                    [ngModelOptions]="{standalone:true}" [(ngModel)]="user.security">
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -61,6 +68,7 @@
                         <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Name}}</th>
                         <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Number}}</th>
                         <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Address}}</th>
+                        <th style="width: 400px;text-align: center;">Security</th>
                         <th style="width: 400px;text-align: center;">Status</th>
                         <th style="width: 400px;text-align: center;">Edit</th>
                         <th style="width: 400px;text-align: center;">Detail</th>
@@ -71,6 +79,7 @@
                         <td style="width: 400px;text-align: center;"> {{item.name}}</td>
                         <td style="width: 400px;text-align: center;"> {{item.number}}</td>
                         <td style="width: 400px;text-align: center;">{{item.address}}</td>
+                        <td style="width: 400px;text-align: center;">{{item.security}}</td>
                         <td style="width: 400px;text-align: center;">
                             <p [ngClass]="{'pendingg':item.status === 'pending','successfulll':item.status === 'active'}"style="margin:0px;">{{item.status}}</p>
                             </td>
