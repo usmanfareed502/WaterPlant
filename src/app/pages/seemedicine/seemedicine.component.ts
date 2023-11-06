@@ -14,6 +14,7 @@ export class SeemedicineComponent {
   public filter: any = { c_id:null,date: null};
   totalamount: any;
   public isshowcustomer = true;
+  public isshowcustomer1 = false;
   public isshowexpence = false;
   public pendingbill: any;
   public confirmbills: any;
@@ -78,12 +79,20 @@ export class SeemedicineComponent {
   }
   pendingbills() {
     this.isshowcustomer = true;
+    this.isshowcustomer1 = false;
     this.isshowexpence = false;
     this.segmentvalue = "complete";
   }
   paidbills(){
     this.isshowexpence = true;
     this.isshowcustomer = false;
+    this.isshowcustomer1 = false;
     this.segmentvalue = "reject";
+  }
+  return(){
+    this.isshowcustomer1 = true;
+    this.isshowexpence = false;
+    this.isshowcustomer = false;
+    this.segmentvalue = "return";
   }
 }

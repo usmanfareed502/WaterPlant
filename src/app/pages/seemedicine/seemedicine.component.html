@@ -68,6 +68,9 @@
   <button type="button" class="btn   w-100"
       [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'"
       (click)="paidbills()">Paid Bills</button>
+      <button type="button" class="btn   w-100"
+      [ngClass]="this.segmentvalue == 'return' ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="return()">Return</button>
 </div>
 
 
@@ -81,7 +84,7 @@
             <th >No</th>
             <th >Customer Name</th>
             <th >Date</th>
-            <th >Security</th>
+            <!-- <th >Security</th> -->
             <th >No Of Bottels</th>
             <th >Return</th>
             <th >Empty</th>
@@ -100,7 +103,7 @@
           <td>{{i+1}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
-          <td>{{item.security}}</td>
+          <!-- <td>{{item.security}}</td> -->
           <td>{{item.no_of_boottels}}</td>
           <td>{{item.return}}</td>
           <td>{{item.empty}}</td>
@@ -114,7 +117,7 @@
           <td>  <a [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
            
           
-            <button class="button" type="button" class="btn btn-primary">Send</button>
+            <button class="button" type="button" class="btn btn-success">whatsapp</button>
             </a></td>
           <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
             <button class="button" type="button" class="btn btn-primary">Send</button>
@@ -131,12 +134,13 @@
                 <div class="row" ngClass="container">
                     <div class="col-md-12">
                       <div>
-                       <h2>Remaining Payment</h2>
+                       <h2 class="reming">Remaining Payment</h2>
                     </div>
                         <div>
                             <label for="name" class="label">Enter Amount</label>
                         </div>
                         <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">
+ 
                     </div>
                 </div>
             </div>
@@ -194,6 +198,91 @@
 
    
   </div>
+</form>
+
+<form *ngIf="isshowcustomer1">
+  <div  class="table-class">
+    <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
+      <thead>
+        <tr>
+            <th >No</th>
+            <th >Customer Name</th>
+            <th >Date</th>
+            <!-- <th >Security</th> -->
+            <th >No Of Bottels</th>
+            <th >Return</th>
+            <th >Empty</th>
+            <th >Amount</th>
+            <th >Discount</th>
+            <th >Total</th>
+            <th >Sumitted Bill</th>
+            <th >Remaining Bill</th>
+            <th >Payment Status</th>
+            <th>Pay Amount</th>
+            <th>Share Bill</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pendingbill ; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.date}}</td>
+          <!-- <td>{{item.security}}</td> -->
+          <td>{{item.no_of_boottels}}</td>
+          <td>{{item.return}}</td>
+          <td>{{item.empty}}</td>
+          <td>{{item.amount}}</td>
+          <td>{{item.discount}}</td>
+          <td>{{item.total}}</td>
+          <td>{{item.submittedBill}}</td>
+          <td>{{item.remainingBill}}</td>
+          <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
+          <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
+          <td>  <a [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
+           
+          
+            <button class="button" type="button" class="btn btn-success">whatsapp</button>
+            </a></td>
+          <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
+            <button class="button" type="button" class="btn btn-primary">Send</button>
+            </a></td> -->
+        </tr>
+        <tbody>
+    </table>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row" ngClass="container">
+                    <div class="col-md-12">
+                      <div>
+                       <h2 class="reming">Remaining Payment</h2>
+                    </div>
+                        <!-- <div>
+                            <label for="name" class="label">Enter Amount</label>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">-->
+                        <div>
+                          <label for="name" class="label">Enter Return</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="insertremaingpayment()">+Add</button>
+  
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+
+
 </form>
 
 
