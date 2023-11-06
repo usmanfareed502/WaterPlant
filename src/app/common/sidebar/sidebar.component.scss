@@ -9,3 +9,13 @@
     max-height: 300px;
     overflow-y: auto; 
   }
+  .menu-header{
+    border-right:2px solid orangered;
+    // border-left: none;
+    // border-bottom: none;
+  }
+  .menu-body{
+    border-right: 2px solid orangered;
+    // border-top: none;
+    // border-left: none;
+  }
