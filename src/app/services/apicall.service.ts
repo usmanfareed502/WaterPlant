@@ -195,6 +195,31 @@ async api_addexpance(data : any ){
              console.log(err);
            });
          }
+         async api_addbotle(data : any ){
+          await this.authservice.con(data, 'addbootleproduction').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+           console.log(this.data)
+           }, (err) => {
+             console.log(err);
+           });
+         }
+         async api_addbotlequantity(data : any ){
+          await this.authservice.con(data, 'updatebottlequantity').then(async (res) => {
+             this.data = JSON.parse(String(res).toString());
+           console.log(this.data)
+           }, (err) => {
+             console.log(err);
+           });
+         }
+         async api_getbootles() {
+          await this.authservice.getdata('getallbottles').then((result) => {
+              this.data = JSON.parse(String(result));
+             console.log(this.data);
+              this.global.set_getbottledetail(this.data);
+            }, (err) => {
+              console.log(err);
+            });
+          }
     
 
 

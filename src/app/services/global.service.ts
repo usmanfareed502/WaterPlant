@@ -78,6 +78,12 @@ set_getdatabyc_id(getcustomerdetail:any){
 this.getcustomerdetail.next(getcustomerdetail)
 console.log(getcustomerdetail)
 }
+private getbottledetail=new BehaviorSubject<any>('');
+public Getbottledetail=this.getbottledetail.asObservable()
+set_getbottledetail(getbottledetail:any){
+this.getbottledetail.next(getbottledetail)
+console.log(getbottledetail)
+}
 
 
 

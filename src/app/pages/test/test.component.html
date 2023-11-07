@@ -1,30 +1,77 @@
-
-        <div class="card" style="overflow-x: auto;margin-top:70px; ">
-            <table class="table table-striped mb-0">
-                <thead style=" background:orangered;color: whitesmoke; height: 50px;">
-                    <tr>
-                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Name}}</th>
-                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Number}}</th>
-                        <th style="width: 400px;text-align: center;">{{this.alldata.Customer_Address}}</th>
-                        <th style="width: 400px;text-align: center;">Status</th>
-                        <th style="width: 400px;text-align: center;">Edit</th>
-                        <th style="width: 400px;text-align: center;">Detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of getcusromer1">
-                        <td style="width: 400px;text-align: center;"> {{item.name}}</td>
-                        <td style="width: 400px;text-align: center;"> {{item.number}}</td>
-                        <td style="width: 400px;text-align: center;">{{item.address}}</td>
-                        <td style="width: 400px;text-align: center;">
-                            <p [ngClass]="{'pendingg':item.status === 'pending','successfulll':item.status === 'active'}"style="margin:0px;">{{item.status}}</p>
+<div class="container">
+    <div style="height:80px;margin-top:-15px;">
+        <button style="position: absolute;right:25px;" class="button" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add Bottle</button>
+    </div>
+            <div class="card" style="overflow-x: auto;margin-top:70px; ">
+                <table class="table table-striped mb-0">
+                    <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                        <tr>
+                            <th style="width: 400px;text-align: center;">No</th>
+                            <th style="width: 400px;text-align: center;">Bottle Size</th>
+                            <th style="width: 400px;text-align: center;">Quantity</th>
+                            <th style="width: 400px;text-align: center;">Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of getBottles; let i =index;">
+                            <td style="width: 400px;text-align: center;"> {{i+1}}</td>
+                            <td style="width: 400px;text-align: center;"> {{item.bottle_size}}</td>
+                            <td style="width: 400px;text-align: center;"> {{item.quantity}}</td>       
+                            <td style="width: 400px;text-align: center;"><button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" (click)="editquantity(item)">Edit</button>
                             </td>
-                        
-                        <td style="width: 400px;text-align: center;"><button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdropudate" (click)="editcustomer(item)">Edit</button>
-                        </td>
-                        <td style="width: 400px;text-align: center;"><button class="button" (click)="viewcustomerdetail(item.c_id)">Details</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="col-12 col-md-12  col-sm-12">
+                        <div class="row" ngClass="container">
+                            <div class="col-md-12">
+                                <div>
+                                    <label for="name" class="label">Bottle Size</label>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Name"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="bottlesData.bottle_size">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer"> 
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addbootle()">+
+                            Add</button>
+    
+                    </div>
+                </div>
+            </div>
         </div>
+</div>
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="col-12 col-md-12  col-sm-12">
+            <div class="row" ngClass="container">
+                <p style="font-size: 20px;color: black;padding-left:13px;">Add <b
+                        style="font-size: 20px;color: orangered;padding-left: 3px;">{{this.bottlesize}}</b><span
+                        style="font-size:20px;color: black;margin-left: 3px;"><b>Quantity</b></span></p>
+
+                <div class="col-md-12">
+                    <div>
+                        <label for="name" class="label">Quantity</label>
+                    </div>
+                    <input type="number" class="form-control" id="name" 
+                        [ngModelOptions]="{standalone:true}" [(ngModel)]="bottleQuantity.quantity">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addquantity()">+ Add</button>
+        </div>
+    </div>
+</div>
+</div>

@@ -15,22 +15,31 @@ export class TestComponent {
     Customer_Address: 'Customer Address', close: 'close', Expance: 'Expance', Name: 'Name', Descripition: 'Descripition',
     Date: 'Date', Amount: 'Amount', BILL: 'BILL', Details: 'Details',
   }
-  public getcusromer1: any;
+  public getBottles: any;
   customerDtail: any;
+  public bottlesData: any = { bottle_size: ''}
+  public bottleQuantity: any = { bot_id:'', quantity:''}
+  bottlesize: any;
   constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
   ngOnInit() {
-   this.apicall.api_getcustomer();
-    this.global.Getcustomer.subscribe(res => {
-      this.getcusromer1 = res;
-      console.log(this.getcusromer1)
+   this.apicall.api_getbootles();
+    this.global.Getbottledetail.subscribe(res => {
+      this.getBottles = res;
+      console.log(this.getBottles)
     });
   }
-  editcustomer(item : any){
-    this.customerDtail = item
+  addbootle(){
+    console.log(this.bottlesData)
+    this.apicall.api_addbotle(this.bottlesData)
   }
- 
-  viewcustomerdetail(c_id : any){
-    // console.log(c_id)
-    // this.router.navigate(['/default/customer-detail'] , { state : { data:c_id}});
+  editquantity(item : any){
+    this.bottleQuantity.bot_id = item.bot_id;
+    this.bottleQuantity.quantity = item.quantity;
+    this.bottlesize = item.bottle_size;
+  }
+  addquantity(){
+    console.log(this.bottleQuantity);
+    this.apicall.api_addbotlequantity(this.bottleQuantity);
+    this.apicall.api_getbootles();
   }
 }
