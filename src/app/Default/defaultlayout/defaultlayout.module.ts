@@ -14,6 +14,7 @@ import { DatadetailsComponent } from 'src/app/pages/datadetails/datadetails.comp
 import { AddmedicineComponent } from 'src/app/pages/addmedicine/addmedicine.component';
 import { SeemedicineComponent } from 'src/app/pages/seemedicine/seemedicine.component';
 import { CustomerDetailComponent } from 'src/app/pages/customer-detail/customer-detail.component';
+
 const routes: Routes = [
     // { path: '', redirectTo: '/layout', pathMatch: 'full', data: { title: 'Layout' } },
     {

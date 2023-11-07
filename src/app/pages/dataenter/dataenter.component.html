@@ -48,43 +48,15 @@
                         <div>
                             <label for="name" class="label">Select Customer</label>
                         </div>
-                        <select ngClass="form-control" placeholder="Search"
-                        class="form-select" aria-label="Default select example"
-                            aria-label="Select  Gender" (change)="selectname($event)">
-                            <option value="" disabled selected>Name</option>
-                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
-                                <td>{{item.name}}</td>
-                            </option>
-                        </select>
+                        <ng-multiselect-dropdown 
+                         placeholder="Search"
+                        aria-label="Default select example"
+                            aria-label="Select  Gender" (change)="selectname($event)"
+                            [settings]="linkcolordropdownSettings"
+                            [data]="getcusromer1"
+                            >  
+                        </ng-multiselect-dropdown>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <div>
-                            <label for="name" class="label">{{this.data.Customer_Number}}</label>
-                        </div>
-                        <select ngClass="form-control" placeholder="Search"
-                            class="form-select form-select-lg mb-3 select" style="height: 56px;"
-                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}" [(ngModel)]="data1.number">
-                            <option value="" disabled selected>Number</option>
-                            <option value="{{item.number}}" *ngFor="let item of getcusromer1">
-                                <td>{{item.number}}</td>
-                            </option>
-                        </select>
-                    </div> -->
-                    <!-- <div class="col-md-4">
-                        <div>
-                            <label for="name" class="label">{{this.data.Customer_Address}}</label>
-                        </div>
-                        <select ngClass="form-control" placeholder="Search"
-                            class="form-select form-select-lg mb-3 select" style="height: 56px;"
-                            aria-label="Select  Gender" [ngModelOptions]="{standalone:true}"
-                            [(ngModel)]="data1.address">
-                            <option value="" disabled selected>Address</option>
-                            <option value="{{item.address}}" *ngFor="let item of getcusromer1">
-                                <td>{{item.address}}</td>
-                            </option>
-                        </select>
-                    </div> -->
-
                 </div>
             </div>
         </div>
