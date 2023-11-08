@@ -1,101 +1,96 @@
 <div ngClass="container">
-  <div  style="height:80px;margin-top:-15px;">
-    <button style="position: absolute;right:25px;" class="button" 
-    type="button" class="btn btn-primary"  >Refresh</button>
+  <div style="height:80px;margin-top:-15px;">
+    <button style="position: absolute;right:25px;" class="button" type="button" class="btn btn-primary">Refresh</button>
   </div>
-    <div class="col-12 col-md-12  col-sm-12">
-      <div class="row"  >
-          <div class="col-md-4 col-sm-12"  >
-             <div class="card" >
-            <p style="margin-top: 5px;">
-              RS:{{this.allbills[2][0].totalbill}}<br>
-              Total Payment
-            </p>
-             </div>
-          </div>                                           
-          <div class="col-md-4  col-sm-12">
-            <div class="card" >
-            <p style="margin-top: 5px;">
-              RS:{{this.allbills[1][0].submitbill}}<br>
-              Submit Payment
-            </p>
-            </div>
-          </div>
-          <div class="col-md-4  col-sm-12">
-            <div class="card" >
-            <p style="margin-top: 5px;">
-              RS:{{this.allbills[3][0].remainigbill}}<br>
-              Remaining Payment
-            </p>
-            </div>     
-          </div>
+  <div class="col-12 col-md-12  col-sm-12">
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <div class="card">
+          <p style="margin-top: 5px;">
+            RS:{{this.allbills[2][0].totalbill}}<br>
+            Total Payment
+          </p>
+        </div>
       </div>
-  </div>
-  
-  <div class="col-12 col-md-12  col-sm-12"  >
-    <div class="row" style="margin-top: 20px;">
-      <div class="col-md-3" >
-        <select  class="form-select" aria-label="Default select example"  (change)="selectname($event)">
-                            <option value="" disabled selected>Name</option>
-                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
-                                <td>{{item.name}}</td>
-                            </option>
-                        </select>
+      <div class="col-md-4  col-sm-12">
+        <div class="card">
+          <p style="margin-top: 5px;">
+            RS:{{this.allbills[1][0].submitbill}}<br>
+            Submit Payment
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4  col-sm-12">
+        <div class="card">
+          <p style="margin-top: 5px;">
+            RS:{{this.allbills[3][0].remainigbill}}<br>
+            Remaining Payment
+          </p>
+        </div>
+      </div>
     </div>
-    <!-- <div class="col-md-3">
+  </div>
+
+  <div class="col-12 col-md-12  col-sm-12">
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-3">
+        <select class="form-select" aria-label="Default select example" (change)="selectname($event)">
+          <option value="" disabled selected>Name</option>
+          <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
+            <td>{{item.name}}</td>
+          </option>
+        </select>
+      </div>
+      <!-- <div class="col-md-3">
       <select class="form-select" aria-label="Default select example" (change)="selectpymentstatus($event)">
           <option value="" disabled selected>Select Payment Status</option>
           <option value="confirm">Confirm Payment</option>
           <option value="pending">Pending Payment</option>
       </select>
   </div> -->
-  <div class="col-md-3">
-    <input type="date"  class="form-control" (change)="selectdate($event)">
- </div>
-  <div class="col-md-3">
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata()">Filter</button>
-  </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control" (change)="selectdate($event)">
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="filterdata()">Filter</button>
+      </div>
     </div>
   </div>
-  
-  
+
+
 </div>
 
 <div class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
   <button type="button" class="btn  w-100"
-      [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'"
-      (click)="pendingbills()">Pending Bills</button>
+    [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'" (click)="pendingbills()">Pending
+    Bills</button>
   <button type="button" class="btn   w-100"
-      [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'"
-      (click)="paidbills()">Paid Bills</button>
-      <button type="button" class="btn   w-100"
-      [ngClass]="this.segmentvalue == 'return' ? 'btn-primary' : 'btn-outline-primary'"
-      (click)="return()">Return</button>
+    [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'" (click)="paidbills()">Paid
+    Bills</button>
+  <button type="button" class="btn   w-100"
+    [ngClass]="this.segmentvalue == 'return' ? 'btn-primary' : 'btn-outline-primary'" (click)="return()">Empty</button>
 </div>
 
 
 
 
 <form *ngIf="isshowcustomer">
-  <div  class="table-class">
+  <div class="table-class">
     <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
       <thead>
         <tr>
-            <th >No</th>
-            <th >Customer Name</th>
-            <th >Date</th>
-            <!-- <th >Security</th> -->
-            <th >No Of Bottels</th>
-            <th >Return</th>
-            <th >Empty</th>
-            <th >Amount</th>
-            <th >Discount</th>
-            <th >Total</th>
-            <th >Sumitted Bill</th>
-            <th >Remaining Bill</th>
-            <th >Payment Status</th>
-            <th>Pay Amount</th>
-            <th>Share Bill</th>
+          <th>No</th>
+          <th>Customer Name</th>
+          <th>Date</th>
+          <th>No Of Bottels</th>
+          <th>Amount</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Sumitted Bill</th>
+          <th>Remaining Bill</th>
+          <th>Payment Status</th>
+          <th>Pay Amount</th>
+          <th>Share Bill</th>
         </tr>
       </thead>
       <tbody>
@@ -103,78 +98,79 @@
           <td>{{i+1}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
-          <!-- <td>{{item.security}}</td> -->
           <td>{{item.no_of_boottels}}</td>
-          <td>{{item.return}}</td>
-          <td>{{item.empty}}</td>
           <td>{{item.amount}}</td>
           <td>{{item.discount}}</td>
           <td>{{item.total}}</td>
           <td>{{item.submittedBill}}</td>
           <td>{{item.remainingBill}}</td>
-          <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
-          <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
-          <td>  <a [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
-           
-          
-            <button class="button" type="button" class="btn btn-success">whatsapp</button>
+          <td>
+            <p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"
+              style="margin:0px;">{{item.paymentstatus}}</p>
+          </td>
+          <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
+          <td> <a
+              [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
+
+
+              <button class="button" type="button" class="btn btn-success">whatsapp</button>
             </a></td>
           <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
             <button class="button" type="button" class="btn btn-primary">Send</button>
             </a></td> -->
         </tr>
-        <tbody>
+      <tbody>
     </table>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
-            <div class="col-12 col-md-12  col-sm-12">
-                <div class="row" ngClass="container">
-                    <div class="col-md-12">
-                      <div>
-                       <h2 class="reming">Remaining Payment</h2>
-                    </div>
-                        <div>
-                            <label for="name" class="label">Enter Amount</label>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">
- 
-                    </div>
+          <div class="col-12 col-md-12  col-sm-12">
+            <div class="row" ngClass="container">
+              <div class="col-md-12">
+                <div>
+                  <h2 class="reming">Remaining Payment</h2>
                 </div>
+                <div>
+                  <label for="name" class="label">Enter Amount</label>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter Amount" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="this.submitbill">
+
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="insertremaingpayment()">+Add</button>
-  
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+              (click)="insertremaingpayment()">+Add</button>
+
+          </div>
         </div>
+      </div>
     </div>
-  </div>
   </div>
 
 
 
 </form>
 <form *ngIf="isshowexpence">
-  <div  class="table-class">
+  <div class="table-class">
     <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
       <thead>
         <tr>
-            <th >No</th>
-            <th >Customer Name</th>
-            <th >Date</th>
-            <th >Security</th>
-            <th >No Of Bottels</th>
-            <th >Return</th>
-            <th >Empty</th>
-            <th >Amount</th>
-            <th >Discount</th>
-            <th >Total</th>
-            <th >Sumitted Bill</th>
-            <th >Remaining Bill</th>
-            <th >Payment Status</th>
+          <th>No</th>
+          <th>Customer Name</th>
+          <th>Date</th>
+          <th>No Of Bottels</th>
+          <th>Amount</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Sumitted Bill</th>
+          <th>Remaining Bill</th>
+          <th>Payment Status</th>
         </tr>
       </thead>
       <tbody>
@@ -182,109 +178,134 @@
           <td>{{i+1}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
-          <td>{{item.security}}</td>
           <td>{{item.no_of_boottels}}</td>
-          <td>{{item.return}}</td>
-          <td>{{item.empty}}</td>
           <td>{{item.amount}}</td>
           <td>{{item.discount}}</td>
           <td>{{item.total}}</td>
           <td>{{item.submittedBill}}</td>
           <td>{{item.remainingBill}}</td>
-          <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
+          <td>
+            <p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"
+              style="margin:0px;">{{item.paymentstatus}}</p>
+          </td>
         </tr>
-        <tbody>
+      <tbody>
     </table>
 
-   
+
   </div>
 </form>
 
 <form *ngIf="isshowcustomer1">
-  <div  class="table-class">
+  <div class="table-class">
     <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
       <thead>
         <tr>
-            <th >No</th>
-            <th >Customer Name</th>
-            <th >Date</th>
-            <!-- <th >Security</th> -->
-            <th >No Of Bottels</th>
-            <th >Return</th>
-            <th >Empty</th>
-            <th >Amount</th>
-            <th >Discount</th>
-            <th >Total</th>
-            <th >Sumitted Bill</th>
-            <th >Remaining Bill</th>
-            <th >Payment Status</th>
-            <th>Pay Amount</th>
-            <th>Share Bill</th>
+          <th>No</th>
+          <th>Customer Name</th>
+          <th>Date</th>
+          <th>No Of Bottels</th>
+          <th>Empty</th>
+          <th>Amount</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Sumitted Bill</th>
+          <th>Remaining Bill</th>
+          <th>Payment Status</th>
+          <th>Empty</th>
+          <th>Share Bill</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of pendingbill ; let i = index">
+        <tr *ngFor="let item of pendingEmptyBill ; let i = index">
           <td>{{i+1}}</td>
           <td>{{item.name}}</td>
           <td>{{item.date}}</td>
-          <!-- <td>{{item.security}}</td> -->
           <td>{{item.no_of_boottels}}</td>
-          <td>{{item.return}}</td>
           <td>{{item.empty}}</td>
           <td>{{item.amount}}</td>
           <td>{{item.discount}}</td>
           <td>{{item.total}}</td>
           <td>{{item.submittedBill}}</td>
           <td>{{item.remainingBill}}</td>
-          <td><p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"style="margin:0px;">{{item.paymentstatus}}</p></td>
-          <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
-          <td>  <a [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
-           
-          
-            <button class="button" type="button" class="btn btn-success">whatsapp</button>
+          <td>
+            <p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"
+              style="margin:0px;">{{item.paymentstatus}}</p>
+          </td>
+          <td><button class="button" type="button" class="btn btn-primary"
+            data-bs-toggle="modal" data-bs-target="#staticBackdropreurn" (click)="clearbottle(item)">Clear Empty</button></td>
+          <td> <a
+              [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
+              <button class="button" type="button" class="btn btn-success">whatsapp</button>
             </a></td>
           <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
             <button class="button" type="button" class="btn btn-primary">Send</button>
             </a></td> -->
         </tr>
-        <tbody>
+      <tbody>
     </table>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
-            <div class="col-12 col-md-12  col-sm-12">
-                <div class="row" ngClass="container">
-                    <div class="col-md-12">
-                      <div>
-                       <h2 class="reming">Remaining Payment</h2>
-                    </div>
-                        <!-- <div>
+          <div class="col-12 col-md-12  col-sm-12">
+            <div class="row" ngClass="container">
+              <div class="col-md-12">
+                <div>
+                  <h2 class="reming">Remaining Payment</h2>
+                </div>
+                <!-- <div>
                             <label for="name" class="label">Enter Amount</label>
                         </div>
                         <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">-->
-                        <div>
-                          <label for="name" class="label">Enter Return</label>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.payAmount.submittedBill">
-                    </div>
+                <div>
+                  <label for="name" class="label">Enter Return</label>
                 </div>
+                <input type="text" class="form-control" placeholder="Name" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="this.payAmount.submittedBill">
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="insertremaingpayment()">+Add</button>
-  
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+              (click)="insertremaingpayment()">+Add</button>
+
+          </div>
         </div>
+      </div>
     </div>
   </div>
-  </div>
 
+  <div class="modal fade" id="staticBackdropreurn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="col-12 col-md-12  col-sm-12">
+        <div class="row" ngClass="container">
+          <div class="col-md-12">
+            <div>
+              <h2 class="reming">Clear Empty</h2>
+            </div>
+            <div>
+              <label for="name" class="label">No Of Bottles</label>
+            </div>
+            <input type="text" class="form-control" placeholder="No Of Bottles" [ngModelOptions]="{standalone: true}"
+              [(ngModel)]="this.bottlesubttotle">
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="insertempty()">+Add</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </form>
-
-
-  
-  

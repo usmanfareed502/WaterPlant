@@ -48,14 +48,31 @@
                         <div>
                             <label for="name" class="label">Select Customer</label>
                         </div>
-                        <ng-multiselect-dropdown 
+                        <!-- <ng-multiselect-dropdown 
                          placeholder="Search"
                         aria-label="Default select example"
                             aria-label="Select  Gender" (change)="selectname($event)"
                             [settings]="linkcolordropdownSettings"
                             [data]="getcusromer1"
                             >  
-                        </ng-multiselect-dropdown>
+                        </ng-multiselect-dropdown> -->
+                        <select  class="form-select" aria-label="Default select example"  (change)="selectname($event)">
+                            <option value="" disabled selected>Name</option>
+                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
+                                <td>{{item.name}}</td>
+                            </option>
+                        </select>
+                        <!-- <ng-multiselect-dropdown
+                            [placeholder]="'custom placeholder'"
+                            [settings]="linkcolordropdownSettings"
+                            [data]="getcusromer1"
+                            [(ngModel)]="selectedItems"
+                            (onSelect)="selectname($event)"
+                            >
+                            </ng-multiselect-dropdown> -->
+                            <!-- <ng-select>
+                                <ng-option *ngFor="let item of getcusromer1">{{item.name}}</ng-option>
+                             </ng-select> -->
                     </div>
                 </div>
             </div>
@@ -69,6 +86,26 @@
                         </div>
                         <input type="date" class="form-control" id="name" placeholder="date"
                             [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.date">
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Select Bottle</label>
+                        </div>
+                        
+                        <select  class="form-select" aria-label="Default select example" (change)="seletbottlesize($event)">
+                            <option value="" disabled selected>Select Bottle</option>
+                            <option value="{{item.bot_id}}" *ngFor="let item of getBottles;">
+                                <td>{{item.bottle_size}}</td>
+                            </option>
+                        </select>
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">No Of Pets</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" no_of_Pets"
+                            [ngModelOptions]="{standalone: true}" (change)="packetcalculation($event)" [(ngModel)]="noofPets">
                     </div>
                     <div class="col-md-3">
                         <div>

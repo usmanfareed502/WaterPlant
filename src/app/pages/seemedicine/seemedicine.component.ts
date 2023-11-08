@@ -12,14 +12,21 @@ export class SeemedicineComponent {
   public getcusromer1: any;
   public payAmount : any = {b_id:'', submittedBill:'', remainingBill:'', paymentstatus:''}
   public filter: any = { c_id:null,date: null};
+  public clearBottleEmpty: any = {b_id:'',bot_id:'',empty:'',returnstatus:''}
   totalamount: any;
   public isshowcustomer = true;
   public isshowcustomer1 = false;
   public isshowexpence = false;
   public pendingbill: any;
+  public pendingEmptyBill: any;
   public confirmbills: any;
   public segmentvalue: any = "complete";
   public whatsappText:string = 'whatsapp://send?text='
+  noOfbootle: any;
+  bottlesubttotle: any;
+  emptyBottle: any;
+  remainbill: any;
+  submitbill: any;
   constructor( public apicall: ApicallService , public global: GlobalService) {}
   async ngOnInit() {
     this.apicall.api_getallbils();
@@ -29,6 +36,9 @@ export class SeemedicineComponent {
      console.log(this.pendingbill)
      this.confirmbills =  this.allbills[0].filter((x: { paymentstatus: string; }) => x.paymentstatus === 'confirm');
      console.log(this.confirmbills)
+      console.log(this.allbills);
+     this.pendingEmptyBill =  this.allbills[0].filter((x: { 	returnstatus: string; }) => x.returnstatus === 'pending');
+     console.log(this.pendingEmptyBill)
       console.log(this.allbills);
     })
     await this.apicall.api_getcustomer();
@@ -56,22 +66,27 @@ export class SeemedicineComponent {
   }
   paymodelopen(item : any){ 
     this.payAmount.b_id = item.b_id;
-    this.payAmount.submittedBill = item.submittedBill;
-    this.payAmount.remainingBill = item.remainingBill;
-    this.totalamount = item.total;
-    this.apicall.api_getallbils();
+    this.payAmount.submittedBill = item.remainingBill;
+    // this.payAmount.remainingBill = item.remainingBill;
+    this.submitbill = item.remainingBill;
+    this.remainbill = item.remainingBill;
+    // this.totalamount = item.total;
+    //  this.submitbill = item.total- item.submittedBill;
+    console.log(this.submitbill)
+    console.log(item.submittedBill)
   }
-  insertremaingpayment(){
-    this.payAmount.remainingBill=this.payAmount.submittedBill-this.totalamount;
-    if(this.totalamount == this.payAmount.submittedBill){
+  async insertremaingpayment(){
+     this.payAmount.submittedBill = this.submitbill;  
+    this.payAmount.remainingBill=this.remainbill-this.submitbill;
+    if(this.payAmount.remainingBill == 0){
       this.payAmount.paymentstatus = 'confirm';
     }
     else{
       this.payAmount.paymentstatus = 'pending';
   }
   console.log(this.payAmount)
-  this.apicall.api_updatebilldetails(this.payAmount)
-  this.apicall.api_getallbils();
+ await this.apicall.api_updatebilldetails(this.payAmount)
+  await this.apicall.api_getallbils();
     this.global.Getcustomerbills.subscribe( res =>{
       this.allbills = res;
       console.log(this.allbills);
@@ -94,5 +109,28 @@ export class SeemedicineComponent {
     this.isshowexpence = false;
     this.isshowcustomer = false;
     this.segmentvalue = "return";
+  }
+  clearbottle(item: any){
+    this.noOfbootle = item.no_of_boottels;
+    this.clearBottleEmpty.b_id = item.b_id;
+    this.clearBottleEmpty.bot_id = item.bot_id;
+    this.bottlesubttotle= item.no_of_boottels - item.empty;
+    this.emptyBottle= item.empty;
+   
+    this.clearBottleEmpty.returnstatus = item.returnstatus;
+    console.log(this.clearBottleEmpty)
+  }
+  async insertempty(){
+    this.clearBottleEmpty.empty = this.emptyBottle +  this.bottlesubttotle;
+   console.log(this.clearBottleEmpty.empty)
+    if(this.clearBottleEmpty.empty == this.noOfbootle){
+      this.clearBottleEmpty.returnstatus = 'confirm';
+    }
+    else{
+      this.clearBottleEmpty.returnstatus = 'pending';
+    }
+    console.log(this.clearBottleEmpty);
+    await this.apicall.api_updsteempty(this.clearBottleEmpty);
+    await this.apicall.api_getallbils();
   }
 }

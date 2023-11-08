@@ -11,16 +11,19 @@ import { Router } from '@angular/router';
 export class DataenterComponent {
 
   public insertbill: any = {
-    c_id: '',date: '', no_of_boottels:'', amount: '', discount: '',
-    total: '', submittedBill: 0, remainingBill: '',paymentstatus:''
+    c_id: '',bot_id:'',date: '', no_of_boottels:'',empty:'', amount: '', discount: '',
+    total: '', submittedBill: 0, remainingBill: '',paymentstatus:'',returnstatus:'confirm'
   }
-
+  selectedItems : any = [];
 
   public user: any = { name: '', number: '', address: '' }
   public data1: any = { name: '', number: '', address: '' }
   public getcusromer1: any;
   public linkcolordropdownSettings={}
   public allowSearchFilter=true;
+  public getBottles: any;
+  public bottleId: any;
+  public noofPets: any;
    constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
 
   async ngOnInit() {
@@ -29,11 +32,25 @@ export class DataenterComponent {
       this.getcusromer1 = res;
       console.log(this.getcusromer1)
     });
+    this.apicall.api_getbootles();
+    this.global.Getbottledetail.subscribe(res => {
+      this.getBottles = res;
+      console.log(this.getBottles)
+    });
+    
     this.linkcolordropdownSettings = {
       textField: 'name',
+      singleSelection: false,
       allowSearchFilter: true,
       clearSearchFilter: true,
-      enableCheckAll:false,   
+      enableCheckAll:true,   
+      //  singleSelection: false,
+      // idField: 'item_id',
+      // textField: 'item_text',
+      // selectAllText: 'Select All',
+      // unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      // allowSearchFilter: true
     };
   }
 
@@ -46,6 +63,30 @@ export class DataenterComponent {
   selectname(event : any){
     console.log(event.target.value)
     this.insertbill.c_id = event.target.value;
+  }
+  seletbottlesize(event : any){
+    this.insertbill.bot_id = event.target.value;
+    console.log(this.insertbill.bot_id)
+  }
+  packetcalculation(event : any){
+    console.log(event.target.value);
+    if(this.insertbill.bot_id == 1){
+      this.insertbill.no_of_boottels  = event.target.value * 6;
+      console.log(  this.insertbill.no_of_boottels)
+    }
+    else if(this.insertbill.bot_id == 2){
+      this.insertbill.no_of_boottels  = event.target.value * 1;
+      console.log(  this.insertbill.no_of_boottels)
+      this.insertbill.returnstatus = 'pending';
+    }
+    else if(this.insertbill.bot_id == 3){
+      this.insertbill.no_of_boottels  = event.target.value * 2;
+      console.log(  this.insertbill.no_of_boottels)
+    }
+    else if(this.insertbill.bot_id == 4){
+      this.insertbill.no_of_boottels  = event.target.value * 12;
+      console.log(  this.insertbill.no_of_boottels)
+    }
   }
   addamount(event : any){
     this.insertbill.amount = event.target.value;
