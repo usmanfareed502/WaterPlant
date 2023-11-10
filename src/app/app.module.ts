@@ -26,7 +26,7 @@ import { AddmedicineComponent } from './pages/addmedicine/addmedicine.component'
 import { SeemedicineComponent } from './pages/seemedicine/seemedicine.component';
 import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
 import { SafeurlPipe } from './services/pipes/safeUrl/safeurl.pipe';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,8 +62,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
       }
     ),
     NgApexchartsModule,
-    CommonModule,
-    NgSelectModule
+    CommonModule
   ],
   providers: [{provide: LocationStrategy , useClass:HashLocationStrategy},DatePipe], 
   bootstrap: [AppComponent]

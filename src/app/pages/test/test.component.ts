@@ -37,9 +37,9 @@ export class TestComponent {
     this.bottleQuantity.quantity = item.quantity;
     this.bottlesize = item.bottle_size;
   }
-  addquantity(){
+  async addquantity(){
     console.log(this.bottleQuantity);
-    this.apicall.api_addbotlequantity(this.bottleQuantity);
-    this.apicall.api_getbootles();
+    await this.apicall.api_addbotlequantity(this.bottleQuantity);
+    await this.apicall.api_getbootles();
   }
 }
