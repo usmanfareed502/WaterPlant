@@ -30,6 +30,13 @@
                             <input type="text" class="form-control1" id="name" placeholder="Address"
                                 [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
                         </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label">Security</label>
+                            </div>
+                            <input type="number" class="form-control1" id="name" placeholder="Security"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.security">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -44,35 +51,22 @@
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <div>
                             <label for="name" class="label">Select Customer</label>
                         </div>
-                        <!-- <ng-multiselect-dropdown 
-                         placeholder="Search"
-                        aria-label="Default select example"
-                            aria-label="Select  Gender" (change)="selectname($event)"
-                            [settings]="linkcolordropdownSettings"
-                            [data]="getcusromer1"
-                            >  
-                        </ng-multiselect-dropdown> -->
+               
                         <select  class="form-select" aria-label="Default select example"  (change)="selectname($event)">
                             <option value="" disabled selected>Name</option>
                             <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
                                 <td>{{item.name}}</td>
                             </option>
                         </select>
-                        <!-- <ng-multiselect-dropdown
-                            [placeholder]="'custom placeholder'"
-                            [settings]="linkcolordropdownSettings"
-                            [data]="getcusromer1"
-                            [(ngModel)]="selectedItems"
-                            (onSelect)="selectname($event)"
-                            >
-                            </ng-multiselect-dropdown> -->
-                            <!-- <ng-select>
-                                <ng-option *ngFor="let item of getcusromer1">{{item.name}}</ng-option>
-                             </ng-select> -->
+                    </div> -->
+                    <div class="col-md-6">
+                        <button class="buttonchose" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop1">{{customername}} &nbsp; <i  class="bi bi-plus-lg"></i> </button>
+            <!-- <label for="name" class="label">{{this.customername}}</label> -->
                     </div>
                 </div>
             </div>
@@ -92,9 +86,9 @@
                             <label for="name" class="label">Select Bottle</label>
                         </div>
                         
-                        <select  class="form-select" aria-label="Default select example" (change)="seletbottlesize($event)">
+                        <select  class="form-select" aria-label="Default select example" [(ngModel)]="selectedBottleSize" [ngModelOptions]="{standalone: true}" (ngModelChange)="seletbottlesize($event)">
                             <option value="" disabled selected>Select Bottle</option>
-                            <option value="{{item.bot_id}}" *ngFor="let item of getBottles;">
+                            <option  *ngFor="let item of getBottles;" [ngValue]="item">
                                 <td>{{item.bottle_size}}</td>
                             </option>
                         </select>
@@ -176,7 +170,44 @@
         </div>
  -->
 
-
+ <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="col-12 col-md-12  col-sm-12">
+                        <div class="row" ngClass="container">
+                            <div class="col-md-12">
+                                <div class="topdiv">
+                                    <h2 class="reming">Choose Customer</h2>
+                                    <i #closeModal id="close-modal" class="bi bi-x-lg" style="font-size: 24px;color: #ff470d;" data-bs-dismiss="modal"></i>
+                                </div>
+                                <input type="text" class="serchdiv" placeholder="Search Customer" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12  col-sm-12 " style="height: 255px; overflow-x: auto;">
+                        <div class="row" ngClass="container">
+                           <div class="col-md-12">
+                            <div class="col-md-12 formforlist" *ngFor="let item of searchTerm ? search_result : getcusromer1">
+                                <div class="form-check">
+                                    <label class="form-check-label" [for]="item.c_id">
+                                      {{item.name}}
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"  [id]="item.c_id" value="{{item.c_id}}"(change)="selectname($event, closeModal ,item.name)" >
+                                  </div>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer"> 
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">+
+                            Add</button>
+    
+                    </div> -->
+                </div>
+            </div>
+        </div>
 
 
 </div>

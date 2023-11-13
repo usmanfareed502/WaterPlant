@@ -14,9 +14,11 @@ export class DataenterComponent {
     c_id: '',bot_id:'',date: '', no_of_boottels:'',empty:'', amount: '', discount: '',
     total: '', submittedBill: 0, remainingBill: '',paymentstatus:'',returnstatus:'confirm'
   }
+  search : any = null ;
+  search_result : any[] = [] ;
   selectedItems : any = [];
-
-  public user: any = { name: '', number: '', address: '' }
+  searchTerm: string = '';
+  public user: any = { name: '', number: '', address: '' ,security:''}
   public data1: any = { name: '', number: '', address: '' }
   public getcusromer1: any;
   public linkcolordropdownSettings={}
@@ -24,6 +26,10 @@ export class DataenterComponent {
   public getBottles: any;
   public bottleId: any;
   public noofPets: any;
+  customername: any = 'Choose Cutomer';
+event: any;
+selectedBottleSize: any;
+  qtnperpet: any;
    constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
 
   async ngOnInit() {
@@ -53,40 +59,44 @@ export class DataenterComponent {
       // allowSearchFilter: true
     };
   }
-
+  onSearchChange() {
+    // console.log(event.target.value);
+    this.search_result = this.getcusromer1.filter((d: { name: string; }) =>
+    d.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+    console.log(this.search_result);
+}
   async addcustomer() {
 
     await this.apicall.api_addcustomer(this.user)
     console.log(this.user)
-    this.user = { name: '', number: '', address: '' }
+    this.user = { name: '', number: '', address: '',security:'' }
+    await this.apicall.api_getcustomer();
   }
-  selectname(event : any){
+  selectname(event : any, element:any , name: any){
     console.log(event.target.value)
+    console.log(name)
+    this.customername = name;
     this.insertbill.c_id = event.target.value;
+    // let item: any[ ] = []
+    // item = this.getcusromer1.filter((entry: { c_id: any; }) => entry.c_id === this.insertbill.c_id);
+    // console.log(item)
+    element.click()
   }
   seletbottlesize(event : any){
-    this.insertbill.bot_id = event.target.value;
+    console.log(event)
+    this.insertbill.bot_id = event.bot_id;
     console.log(this.insertbill.bot_id)
-  }
-  packetcalculation(event : any){
-    console.log(event.target.value);
-    if(this.insertbill.bot_id == 1){
-      this.insertbill.no_of_boottels  = event.target.value * 6;
-      console.log(  this.insertbill.no_of_boottels)
-    }
-    else if(this.insertbill.bot_id == 2){
-      this.insertbill.no_of_boottels  = event.target.value * 1;
-      console.log(  this.insertbill.no_of_boottels)
+    this.qtnperpet = event.qtyPerPet;
+    console.log(this.qtnperpet)
+    if(this.qtnperpet == 1){
       this.insertbill.returnstatus = 'pending';
     }
-    else if(this.insertbill.bot_id == 3){
-      this.insertbill.no_of_boottels  = event.target.value * 2;
+  }
+  packetcalculation(event : any){
+    console.log(event.target.value); 
+      this.insertbill.no_of_boottels  = event.target.value * this.qtnperpet;
       console.log(  this.insertbill.no_of_boottels)
-    }
-    else if(this.insertbill.bot_id == 4){
-      this.insertbill.no_of_boottels  = event.target.value * 12;
-      console.log(  this.insertbill.no_of_boottels)
-    }
   }
   addamount(event : any){
     this.insertbill.amount = event.target.value;

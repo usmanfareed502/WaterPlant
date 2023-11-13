@@ -17,7 +17,7 @@ export class TestComponent {
   }
   public getBottles: any;
   customerDtail: any;
-  public bottlesData: any = { bottle_size: ''}
+  public bottlesData: any = { bottle_size: '',qtyPerPet:''}
   public bottleQuantity: any = { bot_id:'', quantity:''}
   bottlesize: any;
   constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
@@ -28,9 +28,10 @@ export class TestComponent {
       console.log(this.getBottles)
     });
   }
-  addbootle(){
+  async addbootle(){
     console.log(this.bottlesData)
-    this.apicall.api_addbotle(this.bottlesData)
+    await this.apicall.api_addbotle(this.bottlesData)
+    await this.apicall.api_getbootles();
   }
   editquantity(item : any){
     this.bottleQuantity.bot_id = item.bot_id;
