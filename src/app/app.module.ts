@@ -26,6 +26,7 @@ import { AddmedicineComponent } from './pages/addmedicine/addmedicine.component'
 import { SeemedicineComponent } from './pages/seemedicine/seemedicine.component';
 import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
 import { SafeurlPipe } from './services/pipes/safeUrl/safeurl.pipe';
+import { EnterPetsComponent } from './pages/enter-pets/enter-pets.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SafeurlPipe } from './services/pipes/safeUrl/safeurl.pipe';
     SeemedicineComponent,
     CustomerDetailComponent,
     SafeurlPipe,
+    EnterPetsComponent,
     
     // DashboardComponent
   ],

@@ -1,0 +1,435 @@
+<div class="btn-group d-flex" role="group" aria-label="Basic example" style="margin-top:20px;">
+    <button type="button" class="btn  w-100"
+      [ngClass]="this.segmentvalue == 'complete' ? 'btn-primary' : 'btn-outline-primary'" (click)="adbills()">Add Bill</button>
+    <button type="button" class="btn   w-100"
+      [ngClass]="this.segmentvalue == 'reject' ? 'btn-primary' : 'btn-outline-primary'" (click)="seebills()">See Bill</button>
+  </div>
+  <form *ngIf="isshowcustomer">
+    <div style="height:80px;margin-top:-15px;">
+        <button style="position: absolute;right:25px;" class="button" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add Customer</button>
+    </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="col-12 col-md-12  col-sm-12">
+                    <div class="row" ngClass="container">
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label1">Customer Name</label>
+                            </div>
+                            <input type="text" class="form-control1" placeholder="Customer Name"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.name">
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label1">Customer NO</label>
+                            </div>
+                            <input type="text" class="form-control1" id="name" placeholder="Number"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.number">
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label1">Customer Address</label>
+                            </div>
+                            <input type="text" class="form-control1" id="name" placeholder="Address"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.address">
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <label for="name" class="label">Security</label>
+                            </div>
+                            <input type="number" class="form-control1" id="name" placeholder="Security"
+                                [ngModelOptions]="{standalone:true}" [(ngModel)]="user.security">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="addcustomer()">+ Add Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <form>
+        <div class="row" ngClass="tonpmargin1">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <button class="buttonchose" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop1">{{customername}} &nbsp; <i  class="bi bi-plus-lg"></i> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin1">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Date</label>
+                        </div>
+                        <input type="date" class="form-control" id="name" placeholder="date"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.date">
+                    </div>
+                
+                        <!-- <div>
+                            <label for="name" class="label">Select Bottle</label>
+                        </div> -->
+                            <div class="col-3">
+                                <label for="">1.5 Liter</label>
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="this.darliter" (ngModelChange)="seletbottlesize()">
+                                  </div>
+                                </div>
+                            <div class="col-3">
+                                <label for="">500 Ml</label>
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1" 
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="this.halfliter" (ngModelChange)="selethalfliter()">
+                                  </div>
+                                </div>
+                            <div class="col-3">
+                                <label for="">5 Liter</label>
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" aria-label="Username" aria-describedby="basic-addon1"
+                                    [ngModelOptions]="{standalone: true}" [(ngModel)]="this.fivelitr" (ngModelChange)="seletfivelitrliter()">
+                                  </div>
+                                </div>
+                          
+                        <!-- <div class="col-md-4 selectlist" *ngFor="let item of getBottles">
+                            <div class="form-check">
+                                <label class="form-check-label" [for]="item.bot_id">
+                                  {{item.bottle_size}}
+                                </label>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" 
+                                [(ngModel)]="selectedBottleSize" [ngModelOptions]="{standalone: true}"
+                                [id]="item.bot_id" value="{{item.bot_id}}" (ngModelChange)="seletbottlesize($event)">
+                              </div>
+                        </div>
+                         -->
+                        <!-- <select  class="form-select" aria-label="Default select example" [(ngModel)]="selectedBottleSize" [ngModelOptions]="{standalone: true}" (ngModelChange)="seletbottlesize($event)">
+                            <option value="" disabled selected>Select Bottle</option>
+                            <option  *ngFor="let item of getBottles;" [ngValue]="item">
+                                <td>{{item.bottle_size}}</td>
+                            </option>
+                        </select> -->
+                        
+                    
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin1">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    <!-- <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">No Of Pets</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" no_of_Pets"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.petdetal.no_of_pets" (ngModelChange)="packetcalculation()">
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">No Of Bottels</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" no_of_bottels"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.petdetal.no_of_boottels">
+                    </div> -->
+                  
+                    <!-- <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Amount</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" amount" (change)="addamount($event)">
+                    </div> -->
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Total</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" total"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.total" (ngModelChange)="addamount()">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ngClass="tonpmargin1">
+            <div class="col-12 col-md-12  col-sm-12">
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div>
+                            <label for="name" class="label">Sumitted Bill</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" sucmitted"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.submittedBill" (ngModelChange)="insertsubmitbill()">
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label for="name" class="label">Remaining Bill</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder="remeaning"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.remainingBill">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="button" (click)="submit()">Submit</button>
+    </form>
+
+
+
+    
+    <!-- <div class="col-12">
+        <div class="mb-3">
+            <label class="form-label">Grade<span>*</span></label>
+            <input type="text" class="form-control" placeholder="Grade" aria-label="Username"  aria-describedby="basic-addon1"></div>
+        </div>
+ -->
+
+ <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="col-12 col-md-12  col-sm-12">
+                        <div class="row" ngClass="container">
+                            <div class="col-md-12">
+                                <div class="topdiv">
+                                    <h2 class="reming">Choose Customer</h2>
+                                    <i #closeModal id="close-modal" class="bi bi-x-lg" style="font-size: 24px;color: #ff470d;" data-bs-dismiss="modal"></i>
+                                </div>
+                                <input type="text" class="serchdiv" placeholder="Search Customer" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12  col-sm-12 " style="height: 255px; overflow-x: auto;">
+                        <div class="row" ngClass="container">
+                           <div class="col-md-12">
+                            <div class="col-md-12 formforlist" *ngFor="let item of searchTerm ? search_result : getcusromer1">
+                                <div class="form-check">
+                                    <label class="form-check-label" [for]="item.c_id">
+                                      {{item.name}}
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"  [id]="item.c_id" value="{{item.c_id}}"(change)="selectname($event, closeModal ,item.name)" >
+                                  </div>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer"> 
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">+
+                            Add</button>
+    
+                    </div> -->
+                </div>
+            </div>
+        </div>
+</form>
+  <form *ngIf="isshowcustomer1">
+    <div class="col-12 col-md-12  col-sm-12">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="card">
+              <p style="margin-top: 5px;">
+                RS:{{this.totalSum}}<br>
+                Total Payment
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4  col-sm-12">
+            <div class="card">
+              <p style="margin-top: 5px;">
+                RS:{{this.submittedBill}}<br>
+                Submit Payment
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4  col-sm-12">
+            <div class="card">
+              <p style="margin-top: 5px;">
+                RS:{{this.remainingsum }}<br>
+                Remaining Payment
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <button type="button" class="btn  w-50"
+    [ngClass]="this.segment2value == 'complete' ? 'btn-primary' : 'btn-outline-primary'" (click)="pendingbills()">Pending Bills</button>
+  <button type="button" class="btn   w-50"
+    [ngClass]="this.segment2value == 'reject' ? 'btn-primary' : 'btn-outline-primary'" (click)="paidbillsbills()">Confirm Bills</button>
+    <form *ngIf="ispendingcustomer">
+        <div class="table-class">
+            <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Customer Name</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Total</th>
+                  <th>Sumitted Bill</th>
+                  <th>Remaining Bill</th>
+                  <th>Payment Status</th>
+                  <th>Pay Amount</th>
+                  <th>Share Bill</th>
+                  <th>See Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of pendingbill ; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.date}}</td>
+                  <td>{{item.amount}}</td>
+                  <td>{{item.total}}</td>
+                  <td>{{item.submittedBill}}</td>
+                  <td>{{item.remainingBill}}</td>
+                  <td>
+                    <p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"
+                      style="margin:0px;">{{item.paymentstatus}}</p>
+                  </td>
+                  <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"
+                      data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td>
+                  <td> <a
+                      [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
+        
+        
+                      <button class="button" type="button" class="btn btn-success">whatsapp</button>
+                    </a></td>
+                    <td><button class="button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropdetail" (click)="getbilldetail(item)">See Detail</button></td>
+                  <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
+                    <button class="button" type="button" class="btn btn-primary">Send</button>
+                    </a></td> -->
+                </tr>
+              <tbody>
+            </table>
+        
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="col-12 col-md-12  col-sm-12">
+                    <div class="row" ngClass="container">
+                      <div class="col-md-12">
+                        <div>
+                          <h2 class="reming">Remaining Payment</h2>
+                        </div>
+                        <div>
+                          <label for="name" class="label">Enter Amount</label>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enter Amount" [ngModelOptions]="{standalone: true}"
+                          [(ngModel)]="this.submitbill">
+        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close </button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                      (click)="insertremaingpayment()">+Add</button>
+        
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </form>
+    <form *ngIf="ispaidcustomer">
+        <div class="table-class">
+            <table class="fl-table" style="margin-top: 40px; border-radius: 20px;">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Customer Name</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Total</th>
+                  <th>Sumitted Bill</th>
+                  <th>Remaining Bill</th>
+                  <th>Payment Status</th>
+                  <!-- <th>Pay Amount</th> -->
+                  <th>Share Bill</th>
+                  <th>See Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of confirmbills ; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.date}}</td>
+                  <td>{{item.amount}}</td>
+                  <td>{{item.total}}</td>
+                  <td>{{item.submittedBill}}</td>
+                  <td>{{item.remainingBill}}</td>
+                  <td>
+                    <p [ngClass]="{'pendingg':item.paymentstatus === 'pending','successfulll':item.paymentstatus === 'confirm'}"
+                      style="margin:0px;">{{item.paymentstatus}}</p>
+                  </td>
+                  <!-- <td *ngIf="item.remainingBill != 0"><button class="button" type="button" class="btn btn-primary"
+                      data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="paymodelopen(item)">Pay</button></td> -->
+                  <td> <a
+                      [href]="'whatsapp://send?text=Hello,%20%0aI hope this message finds you well.%20%0a%0aI wanted to inform you that your bill for the date ' + item.date + ' is ' + item.total + '.%20%0a%0aYour paid amount is ' + item.submittedBill + ' and your remaining bill is ' + item.remainingBill + '.%20%0a%0aBest regards,%20%0a' | safeurl">
+        
+        
+                      <button class="button" type="button" class="btn btn-success">whatsapp</button>
+                    </a></td>
+                    <td><button class="button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropdetail" (click)="getbilldetail(item)">See Detail</button></td>
+                  <!-- <td>  <a  href="whatsapp://send?text=The text to share!">
+                    <button class="button" type="button" class="btn btn-primary">Send</button>
+                    </a></td> -->
+                </tr>
+              <tbody>
+            </table>
+        
+          
+          </div>
+    </form>
+    <div class="modal fade" id="staticBackdropdetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="position: absolute;right:30px;">
+                <!-- <button class="button" data-bs-dismiss="modal">Close</button> -->
+                <i data-bs-dismiss="modal" class="bi bi-x-lg" style="font-size: 24px;color: #ff470d;" data-bs-dismiss="modal"></i>
+            </div>
+            <div class="col-12 col-md-12  col-sm-12" style="margin-top: 20px;">
+                <div class="row" ngClass="container">
+                    <div class="col-md-12">
+                        <table class="table table-striped mb-0">
+                            <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                                <tr>
+                                    <th style="width: 400px;text-align: center;">No</th>
+                                    <th style="width: 400px;text-align: center;">Bootle</th>
+                                    <th style="width: 400px;text-align: center;">Total Pets</th>
+                                    <th style="width: 400px;text-align: center;">Total Bottles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of billdetail; let i = index;">
+                                    <td style="width: 400px;text-align: center;">{{i+1}}</td>
+                                    <td style="width: 400px;text-align: center;">{{item.bottle_size}}</td>
+                                    <td style="width: 400px;text-align: center;">{{item.no_of_pets}}</td>
+                                    <td style="width: 400px;text-align: center;">{{item.no_of_boottels}}</td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                
+                 
+                  
+                </div>
+            </div>
+         
+        </div>
+    </div>
+</div>
+</form>

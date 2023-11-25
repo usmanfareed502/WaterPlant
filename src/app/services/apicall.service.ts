@@ -104,6 +104,18 @@ async api_addexpance(data : any ){
        console.log(err);
      });
    }
+  async api_addpetdetails(data : any ){
+    await this.authservice.con(data, 'addpetdetails').then(async (res) => {
+       this.data = JSON.parse(String(res).toString());
+       console.log(this.data)
+       this.message = ''
+       this.title = 'Bill Submit Sucessfully'
+       this.toast.SuccessToast(this.message , this.title);
+     
+     }, (err) => {
+       console.log(err);
+     });
+   }
    async api_getbilldetails() {
     await this.authservice.getdata('getbilldetails').then((result) => {
         this.data = JSON.parse(String(result));
@@ -204,7 +216,7 @@ async api_addexpance(data : any ){
            });
          }
          async api_addbotlequantity(data : any ){
-          await this.authservice.con(data, 'updatebottlequantity').then(async (res) => {
+          await this.authservice.con(data, 'updatebottledetail').then(async (res) => {
              this.data = JSON.parse(String(res).toString());
            console.log(this.data)
            }, (err) => {
@@ -220,6 +232,24 @@ async api_addexpance(data : any ){
               console.log(err);
             });
           }
+         async api_getallpetsbils() {
+          await this.authservice.getdata('getallpetsbils').then((result) => {
+              this.data = JSON.parse(String(result));
+             console.log(this.data);
+              this.global.set_getallpetsbilsl(this.data);
+            }, (err) => {
+              console.log(err);
+            });
+          }
+         async api_getalpendingcustomer() {
+          await this.authservice.getdata('getalpendingcustomer').then((result) => {
+              this.data = JSON.parse(String(result));
+             console.log(this.data);
+              this.global.set_getdisablecustomer(this.data);
+            }, (err) => {
+              console.log(err);
+            });
+          }
           async api_updsteempty(data : any ){
             await this.authservice.con(data, 'updatebottleempty').then(async (res) => {
                this.data = JSON.parse(String(res).toString());
@@ -228,7 +258,15 @@ async api_addexpance(data : any ){
                console.log(err);
              });
            }
-    
+           async api_getbillbyb_id(data : any ){
+            await this.authservice.con(data, 'getbillbyb_id').then(async (res) => {
+               this.data = JSON.parse(String(res).toString());
+             console.log(this.data)
+             this.global.set_getbillbyb_id(this.data);
+             }, (err) => {
+               console.log(err);
+             });
+           }
 
 
 

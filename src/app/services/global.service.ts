@@ -85,8 +85,12 @@ this.getbottledetail.next(getbottledetail)
 console.log(getbottledetail)
 }
 
-
-
+private getselectdate=new BehaviorSubject<any>(new Date().toISOString().split('T')[0]);
+public Getselectdate=this.getselectdate.asObservable()
+set_adddate(getselectdate: any){
+this.getselectdate.next(getselectdate)
+console.log(getselectdate)
+}
 
 
 
@@ -151,6 +155,27 @@ console.log(getbottledetail)
     set_getcustomerbills(getcustomerbills : any) {
         this.getcustomerbills.next(getcustomerbills);
         console.log(getcustomerbills);
+    }
+    private getallpetsbils = new BehaviorSubject<any>('');
+    public Getallpetsbils = this.getallpetsbils.asObservable();
+
+    set_getallpetsbilsl(getallpetsbils : any) {
+        this.getallpetsbils.next(getallpetsbils);
+        console.log(getallpetsbils);
+    }
+    private getdisablecustomer = new BehaviorSubject<any>('');
+    public Getdisablecustomer = this.getdisablecustomer.asObservable();
+
+    set_getdisablecustomer(getdisablecustomer : any) {
+        this.getdisablecustomer.next(getdisablecustomer);
+        console.log(getdisablecustomer);
+    }
+    private getBillDetailB_id = new BehaviorSubject<any>('');
+    public GetBillDetailB_id = this.getBillDetailB_id.asObservable();
+
+    set_getbillbyb_id(getBillDetailB_id : any) {
+        this.getBillDetailB_id.next(getBillDetailB_id);
+        console.log(getBillDetailB_id);
     }
 
    

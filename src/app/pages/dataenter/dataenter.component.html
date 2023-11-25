@@ -1,5 +1,6 @@
 <div class="container">
     <div style="height:80px;margin-top:-15px;">
+        <button style="position: absolute;right:200px;" class="button" (click)="refresh()">Refresh</button>
         <button style="position: absolute;right:25px;" class="button" data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add Customer</button>
     </div>
@@ -47,26 +48,15 @@
             </div>
         </div>
     </div>
+ 
     <form>
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    <!-- <div class="col-md-6">
-                        <div>
-                            <label for="name" class="label">Select Customer</label>
-                        </div>
-               
-                        <select  class="form-select" aria-label="Default select example"  (change)="selectname($event)">
-                            <option value="" disabled selected>Name</option>
-                            <option value="{{item.c_id}}" *ngFor="let item of getcusromer1">
-                                <td>{{item.name}}</td>
-                            </option>
-                        </select>
-                    </div> -->
+                    
                     <div class="col-md-6">
                         <button class="buttonchose" data-bs-toggle="modal"
             data-bs-target="#staticBackdrop1">{{customername}} &nbsp; <i  class="bi bi-plus-lg"></i> </button>
-            <!-- <label for="name" class="label">{{this.customername}}</label> -->
                     </div>
                 </div>
             </div>
@@ -79,9 +69,9 @@
                             <label for="name" class="label">Date</label>
                         </div>
                         <input type="date" class="form-control" id="name" placeholder="date"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.date">
+                            [ngModelOptions]="{standalone: true}" (ngModelChange)="changeDate($event)" [(ngModel)]="insertbill.date">
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <div>
                             <label for="name" class="label">Select Bottle</label>
                         </div>
@@ -93,39 +83,48 @@
                             </option>
                         </select>
                         
-                    </div>
-                    <div class="col-md-3">
+                    </div> -->
+                    <!-- <div class="col-md-3">
                         <div>
                             <label for="name" class="label">No Of Pets</label>
                         </div>
                         <input type="number" class="form-control" id="name" placeholder=" no_of_Pets"
                             [ngModelOptions]="{standalone: true}" (change)="packetcalculation($event)" [(ngModel)]="noofPets">
-                    </div>
+                    </div> -->
                     <div class="col-md-3">
                         <div>
                             <label for="name" class="label">No Of Bottels</label>
                         </div>
                         <input type="number" class="form-control" id="name" placeholder=" no_of_bottels"
-                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.no_of_boottels">
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.no_of_boottels" (ngModelChange)="amountcalculatio()">
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Bottle Price</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder="Delivery Charges"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="bottleprice" (ngModelChange)="deliverycharges()">
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label for="name" class="label">Return Bottels</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder="Return Bottels"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.return" >
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" ngClass="tonpmargin1">
+        <!-- <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
                   
                     <div class="col-md-3">
                         <div>
-                            <label for="name" class="label">Amount</label>
+                            <label for="name" class="label">Delivery Charges</label>
                         </div>
-                        <input type="number" class="form-control" id="name" placeholder=" amount" (change)="addamount($event)">
-                    </div>
-                    <div class="col-md-3">
-                        <div>
-                            <label for="name" class="label">Discount</label>
-                        </div>
-                        <input type="number" class="form-control" id="name" placeholder="discount" (change)="adddicount($event)">
+                        <input type="number" class="form-control" id="name" placeholder="Delivery Charges"
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.del_charges" (ngModelChange)="deliverycharges()">
                     </div>
                     <div class="col-md-3">
                         <div>
@@ -136,18 +135,26 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row" ngClass="tonpmargin1">
             <div class="col-12 col-md-12  col-sm-12">
                 <div class="row">
-                    
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div>
+                            <label for="name" class="label">Total</label>
+                        </div>
+                        <input type="number" class="form-control" id="name" placeholder=" total"
+                            [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.total">
+                    </div>
+                    <div class="col-md-4">
                         <div>
                             <label for="name" class="label">Sumitted Bill</label>
                         </div>
-                        <input type="number" class="form-control" id="name" placeholder=" sucmitted" (change)="insertsubmitbill($event)">
+                        <input type="number" class="form-control" id="name" placeholder=" sucmitted" 
+                        [ngModelOptions]="{standalone: true}" [(ngModel)]="insertbill.submittedBill"
+                        (ngModelChange)="insertsubmitbill()">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div>
                             <label for="name" class="label">Remaining Bill</label>
                         </div>
@@ -156,13 +163,16 @@
                     </div>
                 </div>
             </div>
+            <!-- <button class="button" (click)="submit()">Submit</button> -->
         </div>
-        <button class="button" (click)="submit()">Submit</button>
+        <div class="divbutton">
+            <button class="button" (click)="submit()">Submit</button>
+        </div>
     </form>
 
 
 
-
+    
     <!-- <div class="col-12">
         <div class="mb-3">
             <label class="form-label">Grade<span>*</span></label>

@@ -25,7 +25,8 @@ export class AddmedicineComponent {
   public isshowexpence = false;
 
   public segmentvalue: any = "complete";
-  public getcusromer1: any
+  public getcusromer1: any;
+  public pendingcustomer: any;
   public getexpence: any;
   public getbilldetails: any;
   public getexpancedetails: any;
@@ -35,6 +36,11 @@ export class AddmedicineComponent {
     this.global.Getcustomer.subscribe(res => {
       this.getcusromer1 = res;
       console.log(this.getcusromer1)
+    });
+    await this.apicall.api_getalpendingcustomer();
+    this.global.Getdisablecustomer.subscribe(res => {
+      this.pendingcustomer = res;
+      console.log(this.pendingcustomer)
     });
 
     this.apicall.api_getexpance()
@@ -80,6 +86,13 @@ export class AddmedicineComponent {
     console.log(this.customerDtail)
     await this.apicall.api_editcustomer(this.customerDtail)
     await this.apicall.api_getcustomer();
+    await this.apicall.api_getalpendingcustomer();
+  }
+  async changcustomerstatus(item: any){
+    const x = { c_id: item.c_id , name:item.name,number:item.number,address:item.address,status: 'active'}
+    await this.apicall.api_editcustomer(x)
+    await this.apicall.api_getcustomer();
+    await this.apicall.api_getalpendingcustomer();
   }
   viewcustomerdetail(c_id : any){
     console.log(c_id)

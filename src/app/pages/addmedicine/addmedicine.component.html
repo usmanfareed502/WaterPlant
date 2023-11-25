@@ -16,6 +16,44 @@
             <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
                     class="bi bi-plus-lg"></i>{{this.alldata.Add}}</button>
         </div>
+        <div style="position: absolute;margin-top:10px;right:130px;">
+            <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Status</button>
+        </div>
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div style="position: absolute;margin-top:10px;right:30px;">
+                    <button class="button" data-bs-dismiss="modal">Close</button>
+                </div>
+                <div class="col-12 col-md-12  col-sm-12" style="margin-top: 40px;">
+                    <div class="row" ngClass="container">
+                        <div class="col-md-12">
+                            <table class="table table-striped mb-0">
+                                <thead style=" background:orangered;color: whitesmoke; height: 50px;">
+                                    <tr>
+                                        <th style="width: 400px;text-align: center;">Name</th>
+                                        <th style="width: 400px;text-align: center;">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of pendingcustomer; let i = index;">
+                                        <td style="width: 400px;text-align: center;">{{item.name}}</td>
+                                        <td style="width: 400px;text-align: center;"><button class="button" data-bs-dismiss="modal" (click)="changcustomerstatus(item)">Active</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                     
+                      
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">

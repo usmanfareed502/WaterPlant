@@ -39,6 +39,7 @@ export class SeemedicineComponent {
       console.log(this.allbills);
      this.pendingEmptyBill =  this.allbills[0].filter((x: { 	returnstatus: string; }) => x.returnstatus === 'pending');
      console.log(this.pendingEmptyBill)
+  
       console.log(this.allbills);
     })
     await this.apicall.api_getcustomer();

@@ -14,16 +14,40 @@ export class CustomerDetailComponent {
   public payAmount : any = {b_id:'', submittedBill:'', remainingBill:'', paymentstatus:''}
   totalamount: any;
   public customerId: any;
+  public customerid: any;
   public filterDtata:any = { c_id:'' ,paymentstatus:null,start:null, end:null}
+  submitbill: any;
+  remainbill: any;
+  public getonebootlebill: any;
+  public getpetbill: any;
+  public isshowcustomer = true;
+  public isshowcustomer1 = false;
+  public segmentvalue: any = "complete";
+        public totalbootles = 0;
+        public emptybootles = 0;
+        public returnbootles = 0;
+  billdetail: any;
+        
   constructor( public apicall: ApicallService , public global: GlobalService , public date: DatePipe) {}
   async ngOnInit() {
    console.log(history.state.data)
    this.customerId = history.state.data;
-   const x = { c_id: this.customerId};
-    this.apicall.api_getallbilsbyc_id(x);
+    this.customerid = { c_id: this.customerId};
+    this.apicall.api_getallbilsbyc_id(this.customerid);
     this.global.Getcustomerdetail.subscribe( res =>{
       this.allbills = res;
-      console.log(this.allbills);
+      this.getonebootlebill = this.allbills[0].filter( (item: any) => item.bot_id == 2);
+      console.log(this.getonebootlebill);
+      for( let x of this.getonebootlebill){
+        this.totalbootles += x.no_of_boottels;
+        console.log(this.totalbootles);
+        this.emptybootles += x.empty;
+        console.log(this.emptybootles);
+        this.returnbootles += x.return;
+        console.log(this.returnbootles);
+      }
+      this.getpetbill = this.allbills[0].filter( (item: any) => item.bot_id != 2);
+      console.log(this.getpetbill);
     })
    
    
@@ -54,28 +78,40 @@ export class CustomerDetailComponent {
   console.log(this.filterDtata)
   this.apicall.api_getallbilsbyc_idbyafilter(this.filterDtata)
 }
-paymodelopen(item : any){ 
-  this.payAmount.b_id = item.b_id;
-  this.payAmount.submittedBill = item.submittedBill;
-  this.payAmount.remainingBill = item.remainingBill;
-  this.totalamount = item.total;
-  this.apicall.api_getallbils();
+onebottleills(){
+  this.isshowcustomer = true;
+  this.isshowcustomer1 = false;
+  this.segmentvalue = "complete";
 }
-insertremaingpayment(){
-  this.payAmount.remainingBill=this.payAmount.submittedBill-this.totalamount;
-  if(this.totalamount == this.payAmount.submittedBill){
+petbills(){
+  this.isshowcustomer = false;
+  this.isshowcustomer1 = true;
+  this.segmentvalue = "reject";
+}
+paymodelopen(item : any){ 
+  console.log(item)
+  this.payAmount.b_id = item.b_id;
+  this.payAmount.submittedBill = item.remainingBill;
+  // this.payAmount.remainingBill = item.remainingBill;
+  this.submitbill = item.remainingBill;
+  this.remainbill = item.remainingBill;
+  // this.totalamount = item.total;
+  //  this.submitbill = item.total- item.submittedBill;
+  console.log(this.submitbill)
+  console.log(item.submittedBill)
+}
+async insertremaingpayment(){
+   this.payAmount.submittedBill = this.submitbill;  
+  this.payAmount.remainingBill=this.remainbill-this.submitbill;
+  if(this.payAmount.remainingBill == 0){
     this.payAmount.paymentstatus = 'confirm';
   }
   else{
     this.payAmount.paymentstatus = 'pending';
 }
 console.log(this.payAmount)
-this.apicall.api_updatebilldetails(this.payAmount)
-this.apicall.api_getallbils();
-  this.global.Getcustomerbills.subscribe( res =>{
-    this.allbills = res;
-    console.log(this.allbills);
-  })
+// await this.apicall.api_updatebilldetails(this.payAmount)
+await this.apicall.api_getallbilsbyc_id(this.customerid);
 }
 refresh(){
   this.filterDtata.paymentstatus = null;
@@ -83,5 +119,13 @@ refresh(){
   this.filterDtata.end = null;
   const x = { c_id: this.customerId};
   this.apicall.api_getallbilsbyc_id(x);
+}
+getbilldetail(item: any){
+  const x = { b_id: item.b_id}
+  this.apicall.api_getbillbyb_id(x);
+  this.global.GetBillDetailB_id.subscribe( res =>{
+    this.billdetail = res;
+    console.log(this.billdetail)
+  })
 }
 }

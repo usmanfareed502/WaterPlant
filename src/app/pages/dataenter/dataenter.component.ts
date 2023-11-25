@@ -11,9 +11,10 @@ import { Router } from '@angular/router';
 export class DataenterComponent {
 
   public insertbill: any = {
-    c_id: '',bot_id:'',date: '', no_of_boottels:'',empty:'', amount: '', discount: '',
-    total: '', submittedBill: 0, remainingBill: '',paymentstatus:'',returnstatus:'confirm'
+    c_id: '',bot_id:2 ,date: new Date().toISOString().split('T')[0],no_of_pets:'', no_of_boottels:'',return:'',empty: 0, amount: '',
+    del_charges: 0,total: '', submittedBill: 0, remainingBill: '',paymentstatus:'',returnstatus:'pending'
   }
+  public bottleprice = 80;
   search : any = null ;
   search_result : any[] = [] ;
   selectedItems : any = [];
@@ -30,6 +31,8 @@ export class DataenterComponent {
 event: any;
 selectedBottleSize: any;
   qtnperpet: any;
+  public isshowcustomer = true;
+  public isshowcustomer1 = false;
    constructor(public apicall: ApicallService, public global: GlobalService , public router: Router) { }
 
   async ngOnInit() {
@@ -43,7 +46,9 @@ selectedBottleSize: any;
       this.getBottles = res;
       console.log(this.getBottles)
     });
-    
+    this.global.Getselectdate.subscribe(res=>{
+      this.insertbill.date = res;
+    })
     this.linkcolordropdownSettings = {
       textField: 'name',
       singleSelection: false,
@@ -66,6 +71,7 @@ selectedBottleSize: any;
   );
     console.log(this.search_result);
 }
+
   async addcustomer() {
 
     await this.apicall.api_addcustomer(this.user)
@@ -83,54 +89,74 @@ selectedBottleSize: any;
     // console.log(item)
     element.click()
   }
-  seletbottlesize(event : any){
-    console.log(event)
-    this.insertbill.bot_id = event.bot_id;
-    console.log(this.insertbill.bot_id)
-    this.qtnperpet = event.qtyPerPet;
-    console.log(this.qtnperpet)
-    if(this.qtnperpet == 1){
-      this.insertbill.returnstatus = 'pending';
-    }
-  }
-  packetcalculation(event : any){
-    console.log(event.target.value); 
-      this.insertbill.no_of_boottels  = event.target.value * this.qtnperpet;
-      console.log(  this.insertbill.no_of_boottels)
-  }
-  addamount(event : any){
-    this.insertbill.amount = event.target.value;
-    this.insertbill.total = this.insertbill.amount;
-    this.insertbill.remainingBill = this.insertbill.total 
+  // seletbottlesize(event : any){
+  //   console.log(event)
+  //   this.insertbill.bot_id = event.bot_id;
+  //   console.log(this.insertbill.bot_id)
+  //   this.qtnperpet = event.qtyPerPet;
+  //   console.log(this.qtnperpet)
+  //   if(this.qtnperpet == 1){
+  //     this.insertbill.returnstatus = 'pending';
+  //   }
+  // }
+  // packetcalculation(event : any){
+  //   console.log(event.target.value); 
+  //     this.insertbill.no_of_boottels  = event.target.value * this.qtnperpet;
+  //     console.log(  this.insertbill.no_of_boottels)
+  // }
+  
+//   adddicount(event : any){
+//  this.insertbill.discount = event.target.value;
+//    const x = this.insertbill.amount * this.insertbill.discount/100;
+//    this.insertbill.total = this.insertbill.amount - x;
+//    this.insertbill.remainingBill = this.insertbill.total;
 
-  }
-  adddicount(event : any){
- this.insertbill.discount = event.target.value;
-   const x = this.insertbill.amount * this.insertbill.discount/100;
-   this.insertbill.total = this.insertbill.amount - x;
-   this.insertbill.remainingBill = this.insertbill.total;
-
-  }
-  insertsubmitbill(event : any){
-    this.insertbill.submittedBill = event.target.value;
+//   }
+amountcalculatio(){
+  this.insertbill.amount = this.insertbill.no_of_boottels * this.bottleprice;
+  this.insertbill.total = this.insertbill.amount;
+  console.log(this.insertbill.total)
+  this.insertbill.remainingBill = this.insertbill.total;
+}
+deliverycharges(){
+  this.insertbill.amount = this.insertbill.no_of_boottels * this.bottleprice;
+ this.insertbill.total = this.insertbill.amount;
+ console.log(this.insertbill.total)
+ this.insertbill.remainingBill = this.insertbill.total;
+}
+  insertsubmitbill(){
     this.insertbill.remainingBill = this.insertbill.total-this.insertbill.submittedBill;
     console.log(this.insertbill.remainingBill)
   }
   submit(){
+    this.insertbill.no_of_pets = this.insertbill.no_of_boottels;
     if( this.insertbill.remainingBill == 0){
       this.insertbill.paymentstatus = 'confirm'
+    }
+    else if(this.insertbill.submittedBill == null){
+      this.insertbill.submittedBill = 0;
     }
     else{
       this.insertbill.paymentstatus = 'pending'
     }
+    this.global.set_adddate(this.insertbill.date)
     console.log(this.insertbill)
     this.apicall.api_addbilldetails(this.insertbill)
     this.router.navigate(['/default/seemedicine'])
     this.insertbill= {
-      c_id: '',date: '', no_of_boottels:'', amount: '', discount: '',
+      c_id: '',date: '', no_of_boottels:'', amount: '',
       total: '', submittedBill: '', remainingBill: '',paymentstatus:''
     }
  this.apicall.api_getallbils();
   }
-
+  public changeDate(event:any) :void  {
+    this.global.set_adddate(event)
+  }
+  refresh(){
+    this.insertbill = {
+      c_id: '',bot_id:2 ,date: new Date().toISOString().split('T')[0], no_of_boottels:'',return:'',empty:'', amount: '',
+      del_charges: 0,total: '', submittedBill: 0, remainingBill: '',paymentstatus:'',returnstatus:'confirm'
+    }
+    this.customername = 'Choose Cutomer';
+  }
 }

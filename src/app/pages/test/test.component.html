@@ -1,8 +1,8 @@
 <div class="container">
-    <div style="height:80px;margin-top:-15px;">
+    <!-- <div style="height:80px;margin-top:-15px;">
         <button style="position: absolute;right:25px; width: 120px;" class="button" data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"><i class="bi bi-plus-lg"></i>Add Bottle</button>
-    </div>
+    </div> -->
             <div class="card" style="overflow-x: auto;margin-top:70px; ">
                 <table class="table table-striped mb-0">
                     <thead style=" background:orangered;color: whitesmoke; height: 50px;">
@@ -11,6 +11,7 @@
                             <th style="width: 400px;text-align: center;">Bottle Size</th>
                             <th style="width: 400px;text-align: center;">Quantity</th>
                             <th style="width: 400px;text-align: center;">Qtn Per Pet</th>
+                            <!-- <th style="width: 400px;text-align: center;">Bottle Price</th> -->
                             <th style="width: 400px;text-align: center;">Detail</th>
                         </tr>
                     </thead>
@@ -20,6 +21,7 @@
                             <td style="width: 400px;text-align: center;"> {{item.bottle_size}}</td>
                             <td style="width: 400px;text-align: center;"> {{item.quantity}}</td>       
                             <td style="width: 400px;text-align: center;"> {{item.qtyPerPet}}</td>       
+                            <!-- <td style="width: 400px;text-align: center;"> {{item.bottlePrice}}</td>        -->
                             <td style="width: 400px;text-align: center;"><button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" (click)="editquantity(item)">Edit</button>
                             </td>
                         </tr>
@@ -75,6 +77,13 @@ tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <input type="number" class="form-control" id="name" 
                         [ngModelOptions]="{standalone:true}" [(ngModel)]="bottleQuantity.quantity">
                 </div>
+                <!-- <div class="col-md-12">
+                    <div>
+                        <label for="name" class="label">Bottle Price</label>
+                    </div>
+                    <input type="number" class="form-control" id="name" 
+                        [ngModelOptions]="{standalone:true}" [(ngModel)]="bottleQuantity.bottlePrice">
+                </div> -->
             </div>
         </div>
         <div class="modal-footer">

@@ -37,6 +37,7 @@ export class TestComponent {
     this.bottleQuantity.bot_id = item.bot_id;
     this.bottleQuantity.quantity = item.quantity;
     this.bottlesize = item.bottle_size;
+    // this.bottleQuantity.bottlePrice = item.bottlePrice;
   }
   async addquantity(){
     console.log(this.bottleQuantity);
